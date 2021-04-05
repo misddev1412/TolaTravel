@@ -68,13 +68,13 @@
                     <div class="field-inline">
                         <div class="field-group field-input">
                             <label for="place_name">{{__('Place Name')}} ({{$language_default['code']}}) *</label>
-                            <input type="text" id="place_name" name="{{$language_default['code']}}[name]" value="{{$place['name']}}" required placeholder="{{__('What the name of place')}}">
+                            <input type="text" id="place_name" name="{{$language_default['code']}}[name]" value="{{$place['name'] ?? ''}}" required placeholder="{{__('What the name of place')}}">
                         </div>
                         <div class="field-group field-select">
                             <label for="price_range">{{__('Price Range')}}</label>
                             <select id="price_range" name="price_range">
                                 @foreach(PRICE_RANGE as $key => $price)
-                                    <option value="{{$key}}" {{isSelected($key, $place['price_range'])}}>{{$price}}</option>
+                                    <option value="{{$key}}" {{isSelected($key, $place['price_range'] ?? '')}}>{{$price}}</option>
                                 @endforeach
                             </select>
                             <i class="la la-angle-down"></i>
@@ -82,13 +82,13 @@
                     </div>
                     <div class="field-group">
                         <label for="description">{{__('Description')}} ({{$language_default['code']}}) *</label>
-                        <textarea class="form-control" id="description" name="{{$language_default['code']}}[description]" rows="5">{{$place['description']}}</textarea>
+                        <textarea class="form-control" id="description" name="{{$language_default['code']}}[description]" rows="5">{{$place['description'] ?? ''}}</textarea>
                     </div>
                     <div class="field-group field-select">
                         <label for="lis_category">{{__('Category')}} *</label>
                         <select class="chosen-select" id="lis_category" name="category[]" data-placeholder="{{__('Select Category')}}" multiple required>
                             @foreach($categories as $cat)
-                                <option value="{{$cat['id']}}" {{isSelected($cat['id'], $place['category'])}}>{{$cat['name']}}</option>
+                                <option value="{{$cat['id']}}" {{isSelected($cat['id'], $place['category'] ?? '')}}>{{$cat['name']}}</option>
                             @endforeach
                         </select>
                         <i class="la la-angle-down"></i>
@@ -99,7 +99,7 @@
                             @foreach($place_types as $cat)
                                 <optgroup label="{{$cat['name']}}">
                                     @foreach($cat['place_type'] as $type)
-                                        <option value="{{$type['id']}}" {{isSelected($type['id'], $place['place_type'])}}>{{$type['name']}}</option>
+                                        <option value="{{$type['id']}}" {{isSelected($type['id'], $place['place_type'] ?? '')}}>{{$type['name']}}</option>
                                     @endforeach
                                 </optgroup>
                             @endforeach
@@ -112,7 +112,7 @@
                     <div class="field-group field-check">
                         @foreach($amenities as $item)
                             <label for="amenities_{{$item['id']}}">
-                                <input type="checkbox" name="amenities[]" id="amenities_{{$item['id']}}" value="{{$item['id']}}" {{isChecked($item['id'], $place['amenities'])}}>{{$item['name']}}
+                                <input type="checkbox" name="amenities[]" id="amenities_{{$item['id']}}" value="{{$item['id']}}" {{isChecked($item['id'], $place['amenities'] ?? '')}}>{{$item['name']}}
                                 <span class="checkmark">
                                     <i class="la la-check"></i>
                                 </span>
@@ -129,7 +129,7 @@
                                 <select name="country_id" class="custom-select" id="select_country" required>
                                     <option value="">{{__('Select country')}}</option>
                                     @foreach($countries as $country)
-                                        <option value="{{$country['id']}}" {{isSelected($country['id'], $place['country_id'])}}>{{$country['name']}}</option>
+                                        <option value="{{$country['id']}}" {{isSelected($country['id'], $place['country_id'] ?? '')}}>{{$country['name']}}</option>
                                     @endforeach
                                 </select>
                                 <i class="la la-angle-down"></i>
@@ -137,24 +137,25 @@
                             <div class="field-group field-select">
                                 <select name="city_id" class="custom-select" id="select_city" required>
                                     <option value="">{{__('Select city')}}</option>
-                                    @foreach($cities as $city)
-                                        <option value="{{$city['id']}}" {{isSelected($city['id'], $place['city_id'])}}>{{$city['name']}}</option>
-                                    @endforeach
-                                </select>
+                                    @if(!empty($cities))
+                                        @foreach($cities as $city)
+                                            <option value="{{$city['id']}}" {{isSelected($city['id'], $place['city_id'] ?? '')}}>{{$city['name']}}</option>
+                                        @endforeach
+                                    @endif
                                 <i class="la la-angle-down"></i>
                             </div>
                         </div>
                     </div>
                     <div class="field-group">
-                        <input type="text" id="pac-input" placeholder="{{__('Full Address')}}" value="{{$place['address']}}" name="address" autocomplete="off" required/>
+                        <input type="text" id="pac-input" placeholder="{{__('Full Address')}}" value="{{$place['address'] ?? ''}}" name="address" autocomplete="off" required/>
                     </div>
                     <div class="field-group field-maps">
                         <div class="field-inline">
                             <label for="pac-input">{{__('Place Location at Google Map')}}</label>
                         </div>
                         <div class="field-map">
-                            <input type="hidden" id="place_lat" name="lat" value="{{$place['lat']}}">
-                            <input type="hidden" id="place_lng" name="lng" value="{{$place['lng']}}">
+                            <input type="hidden" id="place_lat" name="lat" value="{{$place['lat'] ?? ''}}">
+                            <input type="hidden" id="place_lng" name="lng" value="{{$place['lng'] ?? ''}}">
                             <div id="map"></div>
                         </div>
                     </div>
@@ -163,15 +164,15 @@
                     <h3>Contact Info</h3>
                     <div class="field-group">
                         <label for="place_email">{{__('Email')}}</label>
-                        <input type="email" id="place_email" value="{{$place['email']}}" placeholder="{{__('Your email address')}}" name="email">
+                        <input type="email" id="place_email" value="{{$place['email'] ?? ''}}" placeholder="{{__('Your email address')}}" name="email">
                     </div>
                     <div class="field-group">
                         <label for="place_number">{{__('Phone number')}}</label>
-                        <input type="tel" id="place_number" value="{{$place['phone_number']}}" placeholder="{{__('Your phone number')}}" name="phone_number">
+                        <input type="tel" id="place_number" value="{{$place['phone_number'] ?? ''}}" placeholder="{{__('Your phone number')}}" name="phone_number">
                     </div>
                     <div class="field-group">
                         <label for="place_website">{{__('Website')}}</label>
-                        <input type="text" id="place_website" value="{{$place['website']}}" placeholder="{{__('Your website url')}}" name="website">
+                        <input type="text" id="place_website" value="{{$place['website'] ?? ''}}" placeholder="{{__('Your website url')}}" name="website">
                     </div>
                 </div><!-- .listing-box -->
                 <div class="listing-box" id="social">
@@ -322,7 +323,7 @@
                 </div><!-- .listing-box -->
 
                 <div class="field-group field-submit">
-                    <input type="hidden" name="place_id" value="{{$place['id']}}">
+                    <input type="hidden" name="place_id" value="{{$place['id'] ?? ''}}">
                     @guest
                         <a href="#" class="btn btn-login open-login">{{__('Login to submit')}}</a>
                     @else
