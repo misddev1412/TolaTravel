@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="32px" height="32px" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>Golo_Logo</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Branding" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Logo" transform="translate(-15.000000, -705.000000)" fill-rule="nonzero">
+            <g id="Golo_Logo" transform="translate(15.000000, 705.000000)">
+                <rect id="Rectangle" fill="#23D3D3" x="0" y="0" width="32" height="32" rx="16"></rect>
+                <path d="M16,8.8 C18.4086997,8.8 20.5411434,9.98279262 21.8482045,11.7992513 L18.4103092,13.3265221 C17.7721054,12.7506197 16.926673,12.4 15.999349,12.4 C14.0111239,12.4 12.399349,14.0117749 12.399349,16 C12.399349,17.9878893 14.0105795,19.5994556 15.9983416,19.5999999 L15.9986979,23.2 C12.0235498,23.2 8.8,19.9764502 8.8,16 C8.8,12.0235498 12.0235498,8.8 16,8.8 Z M23.2,16 L23.199,16.048 L23.2,23.1964566 L23.198,23.196 L23.1986979,23.2 L17.5986979,23.2 L17.5986979,19.6 L19.6,19.599 L19.600651,15.9964566 L23.198,15.996 L23.1993542,15.9025688 C23.1997843,15.9349946 23.2,15.9674721 23.2,16 Z" id="Oval" fill="#FFFFFF" transform="translate(16.000000, 16.000000) rotate(-360.000000) translate(-16.000000, -16.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

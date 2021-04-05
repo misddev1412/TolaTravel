@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="35px" height="40px" viewBox="0 0 35 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>Shape 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M26.5926819,4.56262207 C23.6505432,1.6204834 19.7385864,0 15.5775146,0 C11.4167175,0 7.50476074,1.6204834 4.56262207,4.56262207 C1.6204834,7.50476074 -6.75015599e-14,11.4167175 -6.75015599e-14,15.5775146 C-6.75015599e-14,19.7385864 1.6204834,23.6505432 4.56262207,26.5926819 L12.838623,34.8689575 C13.5681152,35.5984497 14.5406799,36 15.5775146,36 C16.6140747,36 17.5866394,35.5984497 18.3161316,34.8689575 L26.5926819,26.5926819 C29.5350952,23.6505432 31.1553039,19.7385864 31.1553039,15.5775146 C31.1553039,11.4167175 29.5350952,7.50476074 26.5926819,4.56262207 Z" id="path-1"></path>
+        <filter x="-11.2%" y="-6.9%" width="122.5%" height="119.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.127076049 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="marker" transform="translate(-288.000000, -279.000000)" fill-rule="nonzero">
+            <g id="Shape-2" transform="translate(290.000000, 280.000000)">
+                <g id="Shape">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <path stroke="#FFFFFF" stroke-width="2" d="M25.8856081,5.26976186 L25.8855751,5.26972885 C23.1309077,2.51506151 19.4732779,1 15.5775146,1 C11.6819924,1 8.0243724,2.5150853 5.26972885,5.26972885 C2.5150853,8.0243724 1,11.6819924 1,15.5775146 C1,19.4732779 2.51506151,23.1309077 5.26974058,25.8855868 L13.5457298,34.1618507 C14.0873593,34.7034802 14.8054367,35 15.5775146,35 C16.3493446,35 17.067414,34.7034616 17.6090366,34.161839 L25.8856081,25.8855421 C28.640347,23.1310604 30.1553039,19.4735205 30.1553039,15.5775146 C30.1553039,11.6817498 28.6403232,8.02421979 25.8856081,5.26976186 Z" stroke-linejoin="square" fill="#EC0A0A" fill-rule="evenodd"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
