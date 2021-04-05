@@ -219,6 +219,18 @@
                         </div>
 
                         <div class="right-header__destinations">
+                            <a title="Country" href="#" class="d-flex align-items-center">
+                                <i class="las la-globe la-24"></i> {{__('Country')}}
+                                <i class="las la-angle-down la-12-black ml-1"></i>
+                            </a>
+                            <ul>
+                                @foreach($countries as $country)
+                                    <li><a title="{{$country->name}}">{{$country->name}}</a></li>
+                                @endforeach
+                            </ul>
+                        </div><!-- .right-header__countries -->
+
+                        <div class="right-header__destinations">
                             <a title="Destinations" href="#">
                                 {{__('Destinations')}}
                                 <i class="la la-angle-down la-12"></i>

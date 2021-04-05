@@ -197,6 +197,18 @@
                                     <li><a href="{{route('page_search_listing', ['city[]' => $city->id])}}" title="{{$city->name}}">{{$city->name}}</a></li>
                                 @endforeach
                             </ul>
+                        </div><!-- .right-header__countries -->
+
+                        <div class="right-header__destinations">
+                            <a title="Destinations" href="#">
+                                {{__('Destinations')}}
+                                <i class="las la-angle-down la-12-black"></i>
+                            </a>
+                            <ul>
+                                @foreach($destinations as $city)
+                                    <li><a href="{{route('page_search_listing', ['city[]' => $city->id])}}" title="{{$city->name}}">{{$city->name}}</a></li>
+                                @endforeach
+                            </ul>
                         </div><!-- .right-header__destinations -->
 
                         @guest

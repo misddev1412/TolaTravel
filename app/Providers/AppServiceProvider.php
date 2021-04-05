@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Language;
 use App\Models\Place;
+use App\Models\Country;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
@@ -35,6 +36,11 @@ class AppServiceProvider extends ServiceProvider
         $destinations = Cache::remember('destinations', 60 * 60, function () {
             return City::query()
                 ->limit(10)
+                ->get();
+        });
+        $countries = Cache::remember('countries', 60 * 60, function () {
+            return Country::query()
+                ->orderBy('name', 'asc')
                 ->get();
         });
 
@@ -74,6 +80,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::share([
             'destinations' => $destinations,
+            'countries'     => $countries,
             'popular_search_cities' => $popular_search_cities,
             'languages' => $languages,
             'language_default' => $language_default,
