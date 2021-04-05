@@ -66,6 +66,7 @@ RUN cd /tmp \
     && curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer
 
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # clean image
 RUN apt-get clean

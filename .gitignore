@@ -12,3 +12,4 @@ yarn-error.log
 /vendor
 /public/uploads/
 /storage
+composer.lock
