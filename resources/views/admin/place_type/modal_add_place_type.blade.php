@@ -36,7 +36,7 @@
                                     <div class="tab-pane fade show {{$index !== 0 ?: "active"}}" id="language_{{$language->code}}" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="form-group">
                                             <label for="name">Place type name <small>({{$language->code}})</small>: *</label>
-                                            <input type="text" class="form-control" name="{{$language->code}}[name]" required>
+                                            <input type="text" class="form-control" name="{{$language->code}}[name]">
                                         </div>
                                     </div>
                                 @endforeach
