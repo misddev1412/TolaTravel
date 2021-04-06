@@ -41,7 +41,7 @@
 <!-- Custom Theme Style -->
 <link href="{{asset('/admin/build/css/custom.min.css')}}" rel="stylesheet">
 <link href="{{asset('/admin/css/custom.css')}}" rel="stylesheet">
-<link rel="icon" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
+<link rel="icon" sizes="16x16" href="https://storage.googleapis.com/exchange-289306.appspot.com/tola/favicon.png">
 <meta name="csrf-token" content="{{ csrf_token() }}"/>
 <script>
     var app_url = window.location.origin;
