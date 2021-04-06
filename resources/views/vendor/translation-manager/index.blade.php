@@ -485,7 +485,7 @@
                                class="editable status-{{$t ? $t->status : 0}} locale-{{$locale->code}}"
                                data-locale="{{$locale->code}}" data-name="<?php echo $locale->code . "|" . htmlentities($key, ENT_QUOTES, 'UTF-8', false) ?>"
                                id="username" data-type="textarea" data-pk="{{$t ? $t->id : 0}}"
-                               data-url="{{$editUrl}}"
+                               data-url="s"
                                data-title="Enter translation">{!! $t ? htmlentities($t->value, ENT_QUOTES, 'UTF-8', false) : '' !!}</a>
                         </td>
                     @endforeach
