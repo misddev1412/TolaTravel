@@ -656,6 +656,7 @@ function changeCountry(country_id, country_name)
             if (response.status === 200) {
                 $('.country_select').html(country_name)
                 $('.right-header__countries .open').removeClass('open')
+                window.location.reload()
             }
         },
         error: function (jqXHR) {

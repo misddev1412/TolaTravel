@@ -41,8 +41,17 @@ class HomeController extends Controller
                 $query->where('status', Place::STATUS_ACTIVE);
             }])
             ->where('status', Country::STATUS_ACTIVE)
-            ->limit(12)
-            ->get();
+            ->limit(12);
+
+            if (Auth::check() && Auth::user()->country_id != null || Session::has('country_id')) {
+                $country_id = Auth::user()->country_id ?? Session::has('country_id');
+                $popular_cities = $popular_cities->where('country_id', $country_id);
+            }
+        
+            $popular_cities = $popular_cities->get()->sortBy(function($query)
+            {
+                return $query->places->count();
+            });
 
         $blog_posts = Post::query()
             ->with(['categories' => function ($query) {
