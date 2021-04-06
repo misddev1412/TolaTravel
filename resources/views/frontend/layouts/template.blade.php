@@ -203,8 +203,13 @@
                 <div class="col-md-6 col-4">
                     <div class="right-header align-right">
                         <div class="right-header__languages">
-                            <a href="#">
-                                <img src="{{flagImageUrl(\Illuminate\Support\Facades\App::getLocale())}}">
+                            <a href="#" >
+                                @foreach($languages as $language)
+                                    @if(\Illuminate\Support\Facades\App::getLocale() == $language->code)
+                                    <i class="las la-language la-24"></i> <a title="{{$language->name}}">{{$language->name}}</a>
+                                    @endif
+                                @endforeach
+
                                 @if(count($languages) > 1)
                                     <i class="las la-angle-down la-12-black"></i>
                                 @endif
@@ -213,7 +218,7 @@
                                 <ul>
                                     @foreach($languages as $language)
                                         @if(\Illuminate\Support\Facades\App::getLocale() !== $language->code)
-                                            <li><a href="{{route('change_language', $language->code)}}" title="{{$language->name}}"><img src="{{flagImageUrl($language->code)}}">{{$language->name}}</a></li>
+                                            <li><a href="{{route('change_language', $language->code)}}" title="{{$language->name}}">{{$language->name}}</a></li>
                                         @endif
                                     @endforeach
                                 </ul>
@@ -240,8 +245,8 @@
                         </div><!-- .right-header__countries -->
 
                         <div class="right-header__destinations">
-                            <a title="Destinations" href="#">
-                                {{__('Destinations')}}
+                            <a title="Destinations" href="#" class="d-flex align-items-center">
+                                <i class="las la-archway la-24"></i> {{__('Destinations')}}
                                 <i class="la la-angle-down la-12"></i>
                             </a>
                             <ul>
