@@ -76,6 +76,7 @@ $router->group([
     $router->get('/places/map', 'PlaceController@getListMap')->name('place_get_list_map');
 
     $router->get('/cities/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
+    $router->get('country/{country_id}/cities', 'CityController@getListMoreByCountry')->name('city_more_by_country');
     $router->get('/cities', 'CityController@search')->name('city_search');
 
     $router->get('/search-listing-input', 'HomeController@searchListing')->name('search_listing');

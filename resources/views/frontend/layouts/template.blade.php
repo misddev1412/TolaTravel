@@ -253,6 +253,11 @@
                                 @foreach($destinations as $city)
                                     <li><a href="{{route('city_detail', $city->slug)}}" title="{{$city->name}}">{{$city->name}}</a></li>
                                 @endforeach
+                                @if(Session::get('country_id') || Auth::check() && Auth::user()->country_id)
+                                    <li><a href="{{route('city_more_by_country', Session::get('country_id') ?? Auth::user()->country_id)}}" title="{{__('View more')}}">{{__('View more')}}</a></li>
+
+                                @endif
+
                             </ul>
                         </div><!-- .right-header__destinations -->
                         @guest

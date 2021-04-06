@@ -162,4 +162,16 @@ class CityController extends Controller
 
         return $cities;
     }
+
+    public function getListMoreByCountry($country_id, Request $request)
+    {
+        $cities = City::query();
+        if ($country_id) {
+            $cities->where('country_id', $country_id);
+        }
+        $cities = $cities->orderBy('created_at', 'desc')->paginate(12);
+        return view('frontend.city.city_list', [
+            'cities'    => $cities
+        ]);
+    }
 }
