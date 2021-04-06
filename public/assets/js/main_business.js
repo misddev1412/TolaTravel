@@ -534,7 +534,6 @@
                     alert('file size is more then' + maxSize + ' bytes');
                     return false;
                 }else{
-                    alert('file size is correct- '+fileSize+' bytes');
                 }
             }else{
                 alert('choose file, please');
