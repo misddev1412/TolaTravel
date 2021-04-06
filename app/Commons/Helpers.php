@@ -173,7 +173,7 @@ function getImageUrl($image_file)
     if ($image_file) {
         return asset("uploads/{$image_file}");
     }
-    return "https://via.placeholder.com/300x300?text=GOLO";
+    return "https://storage.googleapis.com/exchange-289306.appspot.com/tola/Artboard%201.png";
 }
 
 function getUserAvatar($image_file)
