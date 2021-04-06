@@ -861,11 +861,6 @@ textarea {
       display: inline-block;
       vertical-align: -3px; }
 
-.site__brand__logo img {
-  max-width: 250px;
-  top: -8px;
-  position: relative; 
-}
 
 .site__search__form {
   line-height: normal;

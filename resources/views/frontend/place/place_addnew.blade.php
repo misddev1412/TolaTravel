@@ -142,6 +142,7 @@
                                             <option value="{{$city['id']}}" {{isSelected($city['id'], $place['city_id'] ?? '')}}>{{$city['name']}}</option>
                                         @endforeach
                                     @endif
+                                </select>
                                 <i class="la la-angle-down"></i>
                             </div>
                         </div>

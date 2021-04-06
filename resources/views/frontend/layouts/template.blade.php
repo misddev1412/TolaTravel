@@ -44,8 +44,8 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6 col-8">
-                    <div class="site">
-                        <div class="site__menu d-none">
+                    <div class="site site__container">
+                        <div class="site__menu">
                             <a title="Menu Icon" href="#" class="site__menu__icon">
                                 <i class="la la-bars la-24"></i>
                             </a>

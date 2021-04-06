@@ -808,6 +808,18 @@ h1, h2, h3, h4, h5, h6, body {
     line-height: 30px;
 }
 
+.site__brand__logo img {
+    max-width: 250px;
+    top: -8px;
+    position: relative; 
+}
+.site__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+  
+
 @media only screen and (max-width: 1199px) {
     .cities__thumb img {
         height: 250px;
@@ -816,6 +828,11 @@ h1, h2, h3, h4, h5, h6, body {
 }
 
 @media only screen and (max-width: 991px) {
+    .site__brand__logo img {
+        max-width: 150px;
+        top: -5px;
+      }
+      
     .site__search .site__search__field input {
         height: 35px;
         line-height: 35px;
