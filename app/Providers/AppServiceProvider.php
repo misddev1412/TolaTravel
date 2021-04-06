@@ -33,8 +33,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 //        Schema::defaultStringLength(191);
+        URL::forceScheme('https');
         if(env('APP_ENV') == 'production'){
-            URL::forceScheme('https');
         }
         $destinations = Cache::remember('destinations', 60 * 60, function () {
             return City::query()
