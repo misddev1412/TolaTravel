@@ -17,15 +17,17 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/photoswipe/default-skin/default-skin.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/lity/lity.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/gijgo/css/gijgo.min.css')}}"/>
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    
     @if(setting('style_rtl'))
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-rtl.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive-rtl.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom-rtl.css?v=1.0')}}"/>
     @else
-        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css?v=' . time())}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive.css')}}"/>
-        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom.css?v=1.0')}}"/>
+        <link rel="stylesheet" type="text/css" href="{{asset('assets/css/custom.css?v=' . time())}}"/>
     @endif
 
     <link rel="icon" sizes="16x16" href="{{asset('assets/images/favicon.png')}}">
