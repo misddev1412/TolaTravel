@@ -179,7 +179,7 @@
                 <div class="listing-box" id="social">
                     <h3>{{__('Social Networks')}}</h3>
                     <div class="field-group">
-                        <label for="place_socials">{{__('Social Networks')}}</label>
+                      
 
                         <div class="social_list">
                             @if($place)
