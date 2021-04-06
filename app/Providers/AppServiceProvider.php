@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -32,7 +33,9 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 //        Schema::defaultStringLength(191);
-
+        if(env('APP_ENV') == 'production'){
+            URL::forceScheme('https');
+        }
         $destinations = Cache::remember('destinations', 60 * 60, function () {
             return City::query()
                 ->limit(10)
