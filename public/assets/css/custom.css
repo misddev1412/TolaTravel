@@ -717,7 +717,7 @@
     font-weight: 500;
     font-size: 24px;
 }
-h1, h2, h3, h4, h5, h6, body, a, label {
+h1, h2, h3, h4, h5, h6, body, a, label, span {
     font-family: 'Roboto', sans-serif !important;
 }
 .maps-wrap {
