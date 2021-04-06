@@ -48,10 +48,7 @@ class HomeController extends Controller
                 $popular_cities = $popular_cities->where('country_id', $country_id);
             }
         
-            $popular_cities = $popular_cities->get()->sortBy(function($query)
-            {
-                return $query->places->count();
-            });
+            $popular_cities = $popular_cities->orderBy('places_count', 'desc')->get();
 
         $blog_posts = Post::query()
             ->with(['categories' => function ($query) {
