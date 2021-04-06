@@ -220,14 +220,21 @@
                             @endif
                         </div>
 
-                        <div class="right-header__destinations">
+                        <div class="right-header__destinations right-header__countries">
                             <a title="Country" href="#" class="d-flex align-items-center">
-                                <i class="las la-globe la-24"></i> {{__('Country')}}
+                                <i class="las la-globe la-24"></i> 
+                                @if(Session::has('country_id') || (Auth::check() && Auth::user()->country_id != null))
+                                    
+                                    <span class="country_select">{{getCountry(Session::get('country_id') ?? Auth::user()->country_id)->name ?? __('Country')}}</span>
+                                @else
+                                    <span class="country_select">{{__('Country')}}</span>
+                                @endif
+                                
                                 <i class="las la-angle-down la-12-black ml-1"></i>
                             </a>
                             <ul>
                                 @foreach($countries as $country)
-                                    <li><a title="{{$country->name}}">{{$country->name}}</a></li>
+                                    <li><a title="{{$country->name}}" onclick="changeCountry({{$country->id}}, '{{$country->name}}')">{{$country->name}}</a></li>
                                 @endforeach
                             </ul>
                         </div><!-- .right-header__countries -->
@@ -462,7 +469,7 @@
 <script src="{{asset('assets/libs/chosen/chosen.jquery.min.js')}}"></script>
 <!-- orther script -->
 <script src="{{asset('assets/js/main.js?v=1.4')}}"></script>
-<script src="{{asset('assets/js/custom.js?v=1.4')}}"></script>
+<script src="{{asset('assets/js/custom.js?v=' . time())}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{setting('goolge_map_api_key', 'AIzaSyD-2mhVoLX7oIOgRQ-6bxlJt4TF5k0xhWc')}}&libraries=places&language={{\Illuminate\Support\Facades\App::getLocale()}}"></script>
 
 @stack('scripts')

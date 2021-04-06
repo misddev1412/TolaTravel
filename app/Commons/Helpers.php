@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Request;
 use Carbon\Carbon;
-
+use App\Models\Country;
 /*
  * Const general
  */
@@ -240,4 +240,9 @@ function SEOMeta($title = '', $description = '', $image = null, $canonical = '',
 function flagImageUrl($language_code)
 {
     return asset("assets/images/flags/{$language_code}.png");
+}
+
+function getCountry($country_id)
+{
+    return Country::select('name', 'id')->where('id', $country_id)->first();
 }

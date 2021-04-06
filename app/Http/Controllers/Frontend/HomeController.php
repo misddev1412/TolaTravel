@@ -11,6 +11,7 @@ use App\Models\City;
 use App\Models\Country;
 use App\Models\Place;
 use App\Models\PlaceType;
+use App\Models\User;
 use App\Models\Post;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
@@ -18,6 +19,7 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -353,4 +355,13 @@ class HomeController extends Controller
         ]);
     }
 
+    public function ajaxChangeCountry(Request $request)
+    {
+        if(Auth::check()) {
+
+            User::find(Auth::user()->id)->update(['country_id' => $request->country_id]);
+        }
+        Session::put('country_id', $request->country_id);
+        return response()->json(['status' => 200]);
+    }
 }

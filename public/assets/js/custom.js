@@ -640,3 +640,29 @@ function previewUploadImage(input, element_id) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+
+function changeCountry(country_id, country_name) 
+{
+    $.ajax({
+        // dataType: 'json',
+        url: `${app_url}/ajax-change-country`,
+        data: {
+            'country_id': country_id
+        },
+        beforeSend: function () {
+        },
+        success: function (response) {
+            if (response.status === 200) {
+                $('.country_select').html(country_name)
+                $('.right-header__countries .open').removeClass('open')
+            }
+        },
+        error: function (jqXHR) {
+            var response = $.parseJSON(jqXHR.responseText);
+            if (response.message) {
+                alert(response.message);
+            }
+        }
+    });
+}

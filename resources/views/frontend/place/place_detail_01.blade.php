@@ -41,12 +41,7 @@
                         <i class="la la-images la-24"></i>
                         {{__('Gallery')}}
                     </a>
-                    @if($place->video)
-                        <a title="Video" href="{{$place->video}}" data-lity class="lity-btn">
-                            <i class="la la-youtube la-24"></i>
-                            {{__('Video')}}
-                        </a>
-                    @endif
+                   
                 </div><!-- .place-item__photo -->
                 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
                     <!-- Background of PhotoSwipe.
@@ -187,6 +182,20 @@
                                     <a href="https://maps.google.com/?q={{$place->address}}" title="Direction" target="_blank" rel="nofollow">({{__('Direction')}})</a>
                                 </div>
                             </div><!-- .place__box -->
+
+                            @if($place->video)
+                            <div class="place__box">
+                                <h3>{{__('Video')}}</h3>
+                                @php
+
+                                    $youtube = substr($place->video, strpos($place->video, '?v=') + 3, strlen($place->video))
+
+                                @endphp
+                                <iframe width="100%" height="400"
+                                    src="https://www.youtube.com/embed/{{$youtube}}">
+                                </iframe>
+                            </div><!-- .place__box -->
+                            @endif
                             <div class="place__box">
                                 <h3>{{__('Contact Info')}}</h3>
                                 <ul class="place__contact">
