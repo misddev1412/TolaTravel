@@ -347,9 +347,11 @@
                                 <a href="#" title="{{Auth::user()->name}}">
                                     <img src="{{getUserAvatar(user()->avatar)}}" alt="{{Auth::user()->name}}">
                                     <span>
-										{{Auth::user()->name}}
+										{{Auth::user()->name}}  
 										<i class="la la-angle-down la-12"></i>
-									</span>
+                                    </span>
+
+                                        <img style="width:20px;height:20px" src="https://storage.googleapis.com/exchange-289306.appspot.com/tola/toin.png" width="10"> <span style="margin-top:1px">{{number_format(Auth::user()->tcoin)}}</span>
                                 </a>
                                 <div class="account-sub">
                                     <ul>

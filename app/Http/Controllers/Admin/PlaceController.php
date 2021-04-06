@@ -9,11 +9,13 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Country;
 use App\Models\Amenities;
+use App\Models\User;
 use App\Models\Place;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use DB;
 
 class PlaceController extends Controller
 {
@@ -183,6 +185,9 @@ class PlaceController extends Controller
         ]);
 
         $model = Place::find($request->place_id);
+        if ($request->status == Place::STATUS_ACTIVE) {
+            User::find($model->user_id)->update(['tcoin' => DB::raw("tcoin + 10 ")]);
+        }
         $model->fill($data)->save();
 
         return $this->response->formatResponse(200, $model, 'Update place status success!');
