@@ -37,11 +37,7 @@ class AppServiceProvider extends ServiceProvider
             URL::forceScheme('https');
         }
    
-        $destinations = Cache::remember('destinations', 60 * 60, function () {
-            return City::query()
-                ->limit(10)
-                ->get();
-        });
+        
         $countries = Cache::remember('countries', 60 * 60, function () {
             return Country::query()
                 ->orderBy('name', 'asc')
@@ -83,7 +79,6 @@ class AppServiceProvider extends ServiceProvider
 
 
         View::share([
-            'destinations' => $destinations,
             'countries'     => $countries,
             'popular_search_cities' => $popular_search_cities,
             'languages' => $languages,
