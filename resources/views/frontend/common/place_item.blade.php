@@ -3,7 +3,7 @@
         <a title="{{$place->name}}" href="{{route('place_detail', $place->slug)}}"><img src="{{getImageUrl($place->thumb)}}" alt="{{$place->name}}"></a>
     </div>
     <a href="#" class="place-item__addwishlist @if($place->wish_list_count) remove_wishlist active @else @guest open-login @else add_wishlist @endguest @endif" data-id="{{$place->id}}" title="Add Wishlist">
-        <i class="la la-bookmark la-24"></i>
+        <i class="lar la-heart la-24"></i>
     </a>
     <div class="places-item__info">
         <div class="places-item__category">

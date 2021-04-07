@@ -316,7 +316,7 @@ class PlaceController extends Controller
                             <a title='Barcelona' href='{$place_detail_url}'><img src='{$place_thumb}' alt='{$place->name}'></a>
                         </div>
                         <a href='#' class='place-item__addwishlist {$class_wishlist}' data-id='{$place->id}' title='Add Wishlist'>
-                            <i class='la la-bookmark la-24'></i>
+                            <i class='lar la-heart la-24'></i>
                         </a>
                         <div class='places-item__info'>
                             <div class='places-item__category'>

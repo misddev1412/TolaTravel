@@ -14,7 +14,7 @@
                 </div>
                 <div class="place-share">
                     <a title="Save" href="#" class="add-wishlist @if($place->wish_list_count) remove_wishlist active @else @guest open-login @else add_wishlist @endguest @endif" data-id="{{$place->id}}">
-                        <i class="la la-bookmark la-24"></i>
+                        <i class="lar la-heart la-24"></i>
                     </a>
                     <a title="Share" href="#" class="share">
                         <i class="la la-share-square la-24"></i>

@@ -92,7 +92,7 @@ const PRICE_RANGE = {
                             $this.addClass('active');
                             $this.addClass('remove_wishlist');
                             $this.removeClass('add_wishlist');
-                            $this.html('<i class="la la-bookmark la-24"></i>');
+                            $this.html('<i class="lar la-heart la-24"></i>');
                         }
                     },
                     error: function (jqXHR) {
@@ -125,7 +125,7 @@ const PRICE_RANGE = {
                             $this.removeClass('active');
                             $this.removeClass('remove_wishlist');
                             $this.addClass('add_wishlist');
-                            $this.html('<i class="la la-bookmark la-24"></i>');
+                            $this.html('<i class="lar la-heart la-24"></i>');
                         }
                     },
                     error: function (jqXHR) {
