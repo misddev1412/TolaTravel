@@ -745,6 +745,7 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
 .places-item__info .places-item__category {
     flex: 1
 }
+
 .places-item__info  > h3 {
     flex: 2;
     width: 100%;
@@ -759,9 +760,22 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
     text-align: right;
     flex: 2;
 }
+
 .places-item__info h3 a {
     word-wrap: break-word;
 }
+.places-item .places-item__info {
+    bottom: -60px;
+    transition: all .3s ease;
+    will-change: bottom;
+
+}
+.places-item .places-item__info:hover {
+    bottom: 0px;
+   
+
+}
+
 #golo-place-map {
     width: 100%;
     height: 300px
@@ -870,6 +884,26 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
 }
 
 @media only screen and (max-width: 991px) {
+
+    .site-banner__meta a {
+        color: #fff;
+    }
+    .site-banner {
+        background-color: rgba(0, 0, 0, 0.3);
+    }
+
+    .site-banner__meta a:after {
+        background-color: #fff;
+    }
+    .site-banner__title {
+        -webkit-text-stroke: 1px white;
+    }
+    .site-banner__meta span {
+        color: #fff;
+    }
+    .site-banner__meta a {
+        -webkit-text-stroke: 0.1px white;
+    }
     .site__brand__logo img {
         max-width: 150px;
         top: -5px;
