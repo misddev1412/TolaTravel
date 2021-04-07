@@ -727,6 +727,18 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
     display: inline-flex;
 }
 
+
+
+.popup__countries li.active a {
+    color: #23d3d2;
+}
+.places-item__info {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px 20px 20px !important;
+}
+.places-item__info h3 a {
+    word-break: break-all;
+}
 #golo-place-map {
     width: 100%;
     height: 300px
@@ -856,6 +868,10 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
 
     .golo-grid {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .right-header__languages {
+        display: none !important;
     }
 }
 

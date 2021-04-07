@@ -43,7 +43,7 @@
     <header id="header" class="site-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col-8">
+                <div class="col-md-6 col-12">
                     <div class="site site__container">
                         <div class="site__menu">
                             <a title="Menu Icon" href="#" class="site__menu__icon">
@@ -85,6 +85,40 @@
                                         </div><!-- .account -->
                                     @endguest
 
+                                    <div class="popup__destinations popup__box">
+                                        <ul class="menu-arrow">
+                                            <li>
+                                                <a title="Language" href="#">{{__('Language')}}</a>
+                                                <ul class="sub-menu">
+                                                    @foreach($languages as $language)
+
+                                                        @if(\Illuminate\Support\Facades\App::getLocale() !== $language->code)
+                                                            <li><a href="{{route('change_language', $language->code)}}" title="{{$language->name}}">{{$language->name}}</a></li>
+                                                        @endif
+                                                    @endforeach
+                                                  
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div><!-- .popup__destinations -->
+                                    <div class="popup__destinations popup__countries popup__box">
+                                        <ul class="menu-arrow">
+                                            <li>
+                                                <a title="Country" href="#">{{__('Country')}}</a>
+                                                <ul class="sub-menu">
+                                                    @php
+                                                    if(Session::has('country_id') || (Auth::check() && Auth::user()->country_id != null)) {
+                                                        $acticeCountry = Session::get('country_id') ?? Auth::user()->country_id;
+                                                    }
+                                                    @endphp
+                                                    @foreach($countries as $country)
+                                                        <li @if(!empty($acticeCountry) && $country->id == $acticeCountry) class="active" @endif><a title="{{$country->name}}" onclick="changeCountry({{$country->id}}, '{{$country->name}}')">{{$country->name}}</a></li>
+                                                    @endforeach
+                                                  
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div><!-- .popup__destinations -->
                                     <div class="popup__destinations popup__box">
                                         <ul class="menu-arrow">
                                             <li>
@@ -142,7 +176,11 @@
                         <div class="site__brand">
                             <a title="Logo" href="{{route('home')}}" class="site__brand__logo"><img src="{{asset(setting('logo') ? 'uploads/' . setting('logo') : 'assets/images/assets/logo.png')}}" alt="logo"></a>
                         </div><!-- .site__brand -->
-
+                        <div class="right-header__search d-block d-md-none">
+                            <a title="Search" href="#" class="search-open">
+                                <i class="la la-search la-24"></i>
+                            </a>
+                        </div>
                         @unless(isRoute('home'))
                             @if(setting('template', '01') == '01')
                                 <div class="site__search golo-ajax-search">
@@ -200,7 +238,7 @@
                 </div><!-- .col-md-6 -->
 
 
-                <div class="col-md-6 col-4">
+                <div class="col-md-6 col-12">
                     <div class="right-header align-right">
                         <div class="right-header__languages">
                             <a href="#" >
@@ -371,11 +409,7 @@
                                 </div>
                             </div><!-- .account -->
                         @endguest
-                        <div class="right-header__search">
-                            <a title="Search" href="#" class="search-open">
-                                <i class="la la-search la-24"></i>
-                            </a>
-                        </div>
+                      
                         <div class="right-header__button btn">
                             <a title="Add place" href="{{route('place_addnew')}}">
                                 <i class="la la-plus la-24"></i>
