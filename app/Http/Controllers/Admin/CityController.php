@@ -55,8 +55,8 @@ class CityController extends Controller
             'lng' => '',
             'seo_title' => '',
             'seo_description' => '',
-            'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
-            'banner' => 'mimes:jpeg,jpg,png,gif|max:10000'
+            'thumb' => 'mimes:jpeg,jpg,png,gif',
+            'banner' => 'mimes:jpeg,jpg,png,gif'
         ]);
         $data = $this->validate($request, $rule_factory);
 
@@ -94,8 +94,8 @@ class CityController extends Controller
             'lng' => '',
             'seo_title' => '',
             'seo_description' => '',
-            'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000',
-            'banner' => 'mimes:jpeg,jpg,png,gif|max:10000'
+            'thumb' => 'mimes:jpeg,jpg,png,gif',
+            'banner' => 'mimes:jpeg,jpg,png,gif'
         ]);
         $data = $this->validate($request, $rule_factory);
 
