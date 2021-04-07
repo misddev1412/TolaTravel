@@ -755,6 +755,10 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
     width: 100%;
     align-self: end;
 }
+.places-item__meta .places-item__currency {
+    text-align: right;
+    flex: 2;
+}
 .places-item__info h3 a {
     word-wrap: break-word;
 }
