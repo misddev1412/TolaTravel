@@ -140,26 +140,7 @@
                                                     <li><a href="https://lara-cityguide.getgolo.com">City Guide</a></li>
                                                 </ul>
                                             </li>
-                                            <li>
-                                                <a title="Place detail" href="#">Place detail</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="{{route('place_detail', 'boot-cafe')}}">Booking form</a></li>
-                                                    <li><a href="{{route('place_detail', 'le-meurice')}}">Affiliate Book Buttons</a></li>
-                                                    <li><a href="{{route('place_detail', 'musee-guimet')}}">Affiliate Banner Ads</a></li>
-                                                    <li><a href="{{route('place_detail', 'clamato')}}">Enquiry Form</a></li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a title="Page" href="#">Page</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="https://lara.getgolo.com/post/about-us-10">About</a></li>
-                                                    <li><a href="/page-404">404</a></li>
-                                                    <li><a href="https://lara.getgolo.com/post/faqs-11">Faqs</a></li>
-                                                    <li><a href="{{route('page_landing', '03')}}">App Landing</a></li>
-                                                    <li><a href="{{route('page_landing', '01')}}">Construction</a></li>
-                                                    <li><a href="{{route('page_landing', '02')}}">Coming Soon</a></li>
-                                                </ul>
-                                            </li>
+                                           
                                             <li><a title="Blog" href="{{route('post_list_all')}}">Blog</a></li>
                                             <li><a title="Contacts" href="{{route('page_contact')}}">Contact</a></li>
                                         </ul>
