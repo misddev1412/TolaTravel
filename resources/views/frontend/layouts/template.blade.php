@@ -43,7 +43,7 @@
     <header id="header" class="site-header">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 col-12">
+                <div class="col-md-5 col-12">
                     <div class="site site__container">
                         <div class="site__menu">
                             <a title="Menu Icon" href="#" class="site__menu__icon">
@@ -238,7 +238,7 @@
                 </div><!-- .col-md-6 -->
 
 
-                <div class="col-md-6 col-12">
+                <div class="col-md-7 col-12">
                     <div class="right-header align-right">
                         <div class="right-header__languages">
                             <a href="#" >
