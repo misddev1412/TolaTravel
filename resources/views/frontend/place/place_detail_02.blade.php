@@ -42,7 +42,7 @@
                         {{__('Gallery')}}
                     </a>
                     @if($place->video)
-                        <a title="Video" href="{{$place->video}}" data-lity class="lity-btn">
+                        <a title="Video" href="{{getYoutubeEmbedUrl($place->video)}}" data-lity class="lity-btn">
                             <i class="la la-youtube la-24"></i>
                             {{__('Video')}}
                         </a>
@@ -211,7 +211,14 @@
                                         @if($social['name'] && $social['url'])
                                             <li>
                                                 <i class="{{SOCIAL_LIST[$social['name']]['icon']}}"></i>
-                                                <a href="{{SOCIAL_LIST[$social['name']]['base_url'] . $social['url']}}" title="{{$social['url']}}" rel="nofollow" target="_blank">{{$social['url']}}</a>
+                                                @php
+                                                    if(filter_var($social['url'], FILTER_VALIDATE_URL)) {
+                                                        $finalUrl   = $social['url'];
+                                                    } else {
+                                                        $finalUrl   = SOCIAL_LIST[$social['name']]['base_url'] . $social['url'];
+                                                    }
+                                                @endphp
+                                                <a href="{{$finalUrl}}" title="{{$social['url']}}" rel="nofollow" target="_blank">{{$social['url']}}</a>
                                             </li>
                                         @endif
                                     @endforeach

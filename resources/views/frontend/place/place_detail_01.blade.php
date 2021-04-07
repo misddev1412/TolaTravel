@@ -192,7 +192,7 @@
 
                                 @endphp
                                 <iframe width="100%" height="400"
-                                    src="https://www.youtube.com/embed/{{$youtube}}">
+                                    src="{{getYoutubeEmbedUrl($youtube)}}">
                                 </iframe>
                             </div><!-- .place__box -->
                             @endif
@@ -219,9 +219,16 @@
                                     @endif
                                     @foreach($place->social as $social)
                                         @if($social['name'] && $social['url'])
+                                            @php
+                                                if(filter_var($social['url'], FILTER_VALIDATE_URL)) {
+                                                    $finalUrl   = $social['url'];
+                                                } else {
+                                                    $finalUrl   = SOCIAL_LIST[$social['name']]['base_url'] . $social['url'];
+                                                }
+                                            @endphp
                                             <li>
                                                 <i class="{{SOCIAL_LIST[$social['name']]['icon']}}"></i>
-                                                <a href="{{SOCIAL_LIST[$social['name']]['base_url'] . $social['url']}}" title="{{$social['url']}}" rel="nofollow" target="_blank">{{$social['url']}}</a>
+                                                <a href="{{$finalUrl}}" title="{{$social['url']}}" rel="nofollow" target="_blank">{{$social['url']}}</a>
                                             </li>
                                         @endif
                                     @endforeach
