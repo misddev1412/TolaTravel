@@ -773,6 +773,9 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
 .places-item:hover .places-item__info {
     bottom: 0px; 
 }
+.site__search__form .site__search__input {
+    font-family: "Roboto";
+}
 
 .page-title__content {
     background-color: rgb(0, 0, 0, 0.3);
