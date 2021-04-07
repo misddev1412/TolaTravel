@@ -735,9 +735,27 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
 .places-item__info {
     background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 20px 20px 20px !important;
+    height: 145px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+}
+.places-item__info .places-item__category {
+    flex: 1
+}
+.places-item__info  > h3 {
+    flex: 2
+}
+.places-item__meta {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-self: end;
 }
 .places-item__info h3 a {
-    word-break: break-all;
+    word-wrap: break-word;
 }
 #golo-place-map {
     width: 100%;
