@@ -901,10 +901,10 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
 
 @media only screen and (max-width: 991px) {
     .page-title__content h4 {
-        margin-top: 15%;
+        margin-top: 70px;
     }
     .places-item .places-item__info {
-        bottom: -65px;
+        bottom: -73px;
     }
     .site-banner__meta a {
         color: #fff;
