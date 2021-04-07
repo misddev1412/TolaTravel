@@ -891,10 +891,11 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
 .right-header__countries .open a:hover {
     color: #23d3d3;
 }
-.right-header__destinations ul.open, .right-header__languages ul.open {
+.right-header__destinations ul, .right-header__languages ul {
     height: 300px;
     overflow: scroll;
 }
+
 
 @media only screen and (max-width: 1199px) {
     .cities__thumb img {
