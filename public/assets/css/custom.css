@@ -777,6 +777,8 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
 .page-title__content {
     background-color: rgb(0, 0, 0, 0.6);
     padding: 30px;
+    left: 0px;
+    right: 0px;
 }
 
 #golo-place-map {
