@@ -770,7 +770,7 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
     will-change: bottom;
 
 }
-.places-item .places-item__info:hover {
+.places-item:hover .places-item__info {
     bottom: 0px; 
 }
 
