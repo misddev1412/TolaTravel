@@ -6,6 +6,7 @@ use App\Models\Country;
 /*
  * Const general
  */
+use Illuminate\Support\Facades\Cache;
 
 const PRICE_RANGE = [
     "" => "None",
@@ -253,4 +254,58 @@ function getYoutubeEmbedUrl($url)
     $vidid      = explode( '&', str_replace('watch?v=', '', end($urlParts) ) );
 
     return 'https://www.youtube.com/embed/' . $vidid[0] ;
+}
+
+function myip()
+{
+    $ipaddress = '';
+    if (isset($_SERVER['HTTP_CLIENT_IP']))
+        $ipaddress = $_SERVER['HTTP_CLIENT_IP'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_X_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_X_FORWARDED'];
+    else if(isset($_SERVER['HTTP_FORWARDED_FOR']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED_FOR'];
+    else if(isset($_SERVER['HTTP_FORWARDED']))
+        $ipaddress = $_SERVER['HTTP_FORWARDED'];
+    else if(isset($_SERVER['REMOTE_ADDR']))
+        $ipaddress = $_SERVER['REMOTE_ADDR'];
+    else
+        $ipaddress = 'UNKNOWN';    
+    return $ipaddress;
+}
+
+function k_to_c($temp) 
+{
+	if ( !is_numeric($temp) ) { return false; }
+	return round(($temp - 273.15));
+}
+
+function mylattitue()
+{
+    if (env('APP_ENV') == 'local') {
+        $ip = '115.79.208.223';
+    } else {
+        $ip = myip();
+    }
+    $client = new \GuzzleHttp\Client();
+    $result = Cache::remember('position-' . $ip, 3600, function () use ($ip, $client) {
+
+        $response = $client->request('GET', 'https://ipapi.co/' . $ip . '/latlong');
+        if ($response->getStatusCode() == 200) {
+            $weather = Cache::remember('weather-' . $ip, 3600, function () use ($response, $client) {
+                $position = explode(',', $response->getBody());
+                $weather = $client->request('GET', 'http://api.openweathermap.org/data/2.5/weather?lat=' . $position[0] . '&lon=' . $position[1] . '&appid=1d1cc87df30d21b1876f45efe720ef97');
+                $weather = json_decode($weather->getBody(), 1); 
+                return $weather;
+            });
+            return $weather;
+        }
+        return [];
+
+    });
+
+    return $result;
+
 }

@@ -28,6 +28,7 @@ class HomeController extends Controller
     public function __construct(Response $response)
     {
         $this->response = $response;
+        // dd(mylattitue()['main']['temp']);
     }
 
     public function index()

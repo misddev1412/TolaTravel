@@ -63,6 +63,21 @@
                 </div><!-- .cities__content -->
             </div>
         </div><!-- .cities -->
+        
+        <div class="products mb-5">
+            <div class="container">
+                <h2 class="cities__title title">{{__('Market Place')}}</h2>
+                <div class="cities__content">
+                    <div class="row">
+                        @foreach($popular_cities as $city)
+                            <div class="col-lg-3 col-sm-6">
+                                @include('frontend.common.product_item')
+                            </div>
+                        @endforeach
+                    </div>
+                </div><!-- .cities__content -->
+            </div>
+        </div><!-- .cities -->
         <div class="banner-apps" {{$home_banner_app}}>
             <div class="container">
                 <div class="banner-apps__content">

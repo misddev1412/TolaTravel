@@ -1,0 +1,197 @@
+.profile-header {
+    border-radius: 12px;
+    background-color: #fff;
+    box-shadow: 0 0 40px 0 rgb(94 92 154 / 6%);
+}
+
+.profile-header .profile-header-cover {
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    height: 300px;
+    margin-bottom: 0;
+}
+figure>img {
+    width: 100%;
+    height: 100%;
+}
+.profile-header .profile-header-info {
+    height: 126px;
+    position: relative;
+}
+.user-short-description {
+    padding-top: 84px;
+    position: relative;
+}
+.user-short-description.big {
+    padding-top: 52px;
+}
+.user-short-description.big .user-short-description-avatar {
+    top: -116px;
+    margin-left: -74px;
+}
+.user-avatar.big {
+    width: 148px;
+    height: 164px;
+}
+.user-avatar {
+    display: block;
+  
+}
+.user-short-description .user-short-description-avatar {
+    position: absolute;
+    left: 50%;
+
+}
+
+.user-avatar .user-avatar-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+
+.user-avatar .user-avatar-progress, .user-avatar .user-avatar-progress-border {
+    position: absolute;
+    top: 9px;
+    left: 8px;
+    z-index: 2;
+}
+
+.user-avatar .user-avatar-badge {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 28px;
+    height: 32px;
+    position: absolute;
+    top: 68px;
+    right: 5px;
+    z-index: 4;
+}
+
+.user-avatar .user-avatar-badge .user-avatar-badge-border {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 4;
+}
+
+.user-avatar .user-avatar-badge .user-avatar-badge-content {
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    z-index: 5;
+}
+
+.user-avatar.big .user-avatar-badge .user-avatar-badge-content {
+    top: 5px;
+    left: 4px;
+}
+.user-stat.big {
+    padding: 0 30px;
+}
+.user-stat {
+    padding: 0 24px;
+}
+
+.user-stat.big .user-stat-title {
+    font-size: 1.375rem;
+}
+
+.user-stat .user-stat-text, .user-stat .user-stat-title {
+    font-weight: 700;
+    text-transform: uppercase;
+    text-align: center;
+}
+.profile-header .profile-header-info .user-stats {
+    position: absolute;
+    top: 54px;
+    left: 40px;
+}
+.user-stats {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.user-short-description .user-short-description-text, .user-short-description .user-short-description-title {
+    font-weight: 700;
+    text-align: center;
+}
+.description.big .user-short-description-text {
+    font-size: .75rem;
+}
+
+.user-avatar.big .user-avatar-badge {
+    width: 40px;
+    height: 44px;
+    top: 102px;
+    right: 8px;
+}
+
+.user-avatar .user-avatar-progress-border {
+    z-index: 2;
+}
+
+.user-avatar.big .user-avatar-progress, .user-avatar.big .user-avatar-progress-border {
+    top: 14px;
+    left: 12px;
+}
+
+.user-short-description .user-short-description-text, .user-short-description .user-short-description-title {
+    font-weight: 700;
+    text-align: center;
+}
+.profile-header .profile-header-info .profile-header-social-links-wrap {
+    width: 352px;
+    height: 44px;
+    margin: 0 auto;
+    position: absolute;
+    top: 54px;
+    right: 32px;
+}
+.profile-header .profile-header-info .profile-header-info-actions .profile-header-info-action.button {
+    width: 180px;
+}
+.profile-header .profile-header-info .profile-header-info-actions .profile-header-info-action {
+    margin-right: 16px;
+}
+.button.secondary {
+    background-color: #615dfa;
+    box-shadow: 4px 7px 12px 0 rgb(97 93 250 / 20%);
+}
+.profile-header .profile-header-info .profile-header-info-actions {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    top: -40px;
+    right: 32px;
+}
+
+.user-short-description .user-short-description-text {
+    margin-top: 10px;
+    color: #adafca;
+    font-size: .6875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.avatar {
+    display: flex;
+    flex: 1;
+    position: absolute;
+    top: -100px;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    z-index: 99;
+}
+.avatar img {
+    width: 150px;
+    border-radius: 50%;
+}

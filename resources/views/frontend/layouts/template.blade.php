@@ -85,6 +85,9 @@
                                         </div><!-- .account -->
                                     @endguest
 
+                                    {{-- @php var_dump(mylattitue()); @endphp
+                                    @if(!empty(mylattitue())) --}}
+                                   
                                     <div class="popup__destinations popup__box">
                                         <ul class="menu-arrow">
                                             <li>
@@ -221,6 +224,12 @@
 
                 <div class="col-md-7 col-12">
                     <div class="right-header align-right">
+                        @if(!empty(mylattitue()))
+                        <div class="weather">
+                            <img src="http://openweathermap.org/img/wn/{{mylattitue()['weather'][0]['icon']}}.png" alt=""> {{k_to_c(mylattitue()['main']['temp'])}} &#x2103;
+
+                        </div>
+                        @endif
                         <div class="right-header__languages">
                             <a href="#" >
                                 @foreach($languages as $language)
