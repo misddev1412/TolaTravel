@@ -526,9 +526,6 @@
                     return false;
                 } else {
                 }
-            } else {
-                alert('choose file, please');
-                return false;
             }
         });
 

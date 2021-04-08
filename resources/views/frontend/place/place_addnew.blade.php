@@ -3,6 +3,7 @@
     <main id="main" class="site-main listing-main">
         <div class="listing-nav">
             <div class="listing-menu nav-scroll">
+               
                 <ul>
                     <li class="active">
                         <a href="#genaral" title="Genaral">
@@ -63,27 +64,48 @@
                     @method('PUT')
                 @endif
                 @csrf
+                <ul class="nav nav-tabs bar_tabs" role="tablist">
+
+                @foreach($languages as $index => $language)
+                    <li class="nav-item">
+                        <a class="nav-link {{$index !== 0 ?: "active"}}" id="home-tab" data-toggle="tab" href="#language_{{$language->code}}" role="tab" aria-controls="" aria-selected="">{{$language->name}}</a>
+                    </li>
+                @endforeach
+                </ul>
                 <div class="listing-box" id="genaral">
                     <h3>{{__('Genaral')}}</h3>
-                    <div class="field-inline">
-                        <div class="field-group field-input">
-                            <label for="place_name">{{__('Place Name')}} ({{$language_default['code']}}) *</label>
-                            <input type="text" id="place_name" name="{{$language_default['code']}}[name]" value="{{$place['name'] ?? ''}}" required placeholder="{{__('What the name of place')}}">
-                        </div>
-                        <div class="field-group field-select">
-                            <label for="price_range">{{__('Price Range')}}</label>
-                            <select id="price_range" name="price_range">
-                                @foreach(PRICE_RANGE as $key => $price)
-                                    <option value="{{$key}}" {{isSelected($key, $place['price_range'] ?? '')}}>{{$price}}</option>
-                                @endforeach
-                            </select>
-                            <i class="la la-angle-down"></i>
-                        </div>
-                    </div>
                     <div class="field-group">
-                        <label for="description">{{__('Description')}} ({{$language_default['code']}}) *</label>
-                        <textarea class="form-control" id="description" name="{{$language_default['code']}}[description]" rows="5">{{$place['description'] ?? ''}}</textarea>
+                        <div class="tab-content">
+                            @foreach($languages as $index => $language)
+                                @php
+                                    $trans = $place ? $place->translate($language->code) : [];
+                                @endphp
+                                <div class="tab-pane fade show {{$index !== 0 ?: "active"}}" id="language_{{$language->code}}" role="tabpanel" aria-labelledby="home-tab">
+                                    <div class="field-group field-input">
+                                        <label for="place_name">{{__('Place Name')}} ({{$language->code}}) *</label>
+                                        <input type="text" id="place_name" name="{{$language->code}}[name]" value="{{$trans['name'] ?? ''}}" required placeholder="{{__('What the name of place')}}">
+                                    </div>
+                                    <div class="field-group">
+                        
+                                        <label for="description">{{__('Description')}} ({{$language->code}}) *</label>
+                                        <textarea class="form-control" id="description" name="{{$language->code}}[description]" rows="5">{{$trans['description'] ?? ''}}</textarea>
+                                    </div>
+                                    
+                                </div>
+                            @endforeach
+                        </div>
+                        
                     </div>
+                    <div class="field-group field-select">
+                        <label for="price_range">{{__('Price Range')}}</label>
+                        <select id="price_range" name="price_range">
+                            @foreach(PRICE_RANGE as $key => $price)
+                                <option value="{{$key}}" {{isSelected($key, $place['price_range'] ?? '')}}>{{$price}}</option>
+                            @endforeach
+                        </select>
+                        <i class="la la-angle-down"></i>
+                    </div>
+                 
                     <div class="field-group field-select">
                         <label for="lis_category">{{__('Category')}} *</label>
                         <select class="chosen-select" id="lis_category" name="category[]" data-placeholder="{{__('Select Category')}}" multiple required>
