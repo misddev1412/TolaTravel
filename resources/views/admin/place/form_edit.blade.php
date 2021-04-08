@@ -25,11 +25,11 @@
                             <div class="tab-pane fade show {{$index !== 0 ?: "active"}}" id="language_{{$language->code}}" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="form-group">
                                     <label for="place_name">Place name <small>({{$language->code}})</small>: *</label>
-                                    <input type="text" class="form-control" name="{{$language->code}}[name]" value="{{$trans['name']}}" placeholder="What the name of place" autocomplete="off" {{$index !== 0 ?: "required"}}>
+                                    <input type="text" class="form-control" name="{{$language->code}}[name]" value="{{$trans['name'] ?? ''}}" placeholder="What the name of place" autocomplete="off" {{$index !== 0 ?: "required"}}>
                                 </div>
                                 <div class="form-group">
                                     <label for="name">Description <small>({{$language->code}})</small>: *</label>
-                                    <textarea type="text" class="form-control" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans['description']}}</textarea>
+                                    <textarea type="text" class="form-control" name="{{$language->code}}[description]" rows="6" {{$index !== 0 ?: "required"}}>{{$trans['description'] ?? ''}}</textarea>
                                 </div>
                             </div>
                         @endforeach
