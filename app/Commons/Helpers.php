@@ -309,3 +309,4 @@ function mylattitue()
     return $result;
 
 }
+

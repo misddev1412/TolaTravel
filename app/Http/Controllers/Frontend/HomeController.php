@@ -13,6 +13,7 @@ use App\Models\Place;
 use App\Models\PlaceType;
 use App\Models\User;
 use App\Models\Post;
+use App\Models\GiftDaily;
 use App\Models\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
@@ -20,6 +21,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Auth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -370,5 +372,17 @@ class HomeController extends Controller
         }
         Session::put('country_id', $request->country_id);
         return response()->json(['status' => 200]);
+    }
+
+    public function ajaxReceiveGiftDaily(Request $request)
+    {
+        $random = rand(1, 100);
+        if (Auth::check() && Auth::user()->giftDaily == null) {
+            GiftDaily::create(['user_id' => Auth::user()->id, 'toin' => $random, 'date' => Carbon::today()]);
+            User::find(Auth::user()->id)->update(['tcoin' => $random]);
+            return response()->json(['status' => 200, 'toin' => $random]);
+        }
+        return response()->json(['status' => 500]);
+
     }
 }

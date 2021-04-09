@@ -19,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/gijgo/css/gijgo.min.css')}}"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.0/sweetalert2.min.css">
     @if(setting('style_rtl'))
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style-rtl.css')}}"/>
         <link rel="stylesheet" type="text/css" href="{{asset('assets/css/responsive-rtl.css')}}"/>
@@ -37,7 +37,14 @@
     </script>
     @stack('style')
 </head>
-
+@if(Auth::check() && Auth::user()->giftDaily == null)
+<div class="overlay-gift" >
+    <img class="close__gift" onclick="receiveToin()" src="https://storage.googleapis.com/exchange-289306.appspot.com/tola/gift1.png">
+    <img class="open__gift"  style="display:none" src="https://storage.googleapis.com/exchange-289306.appspot.com/tola/gift2.png?v=1">
+    <div class="toin" style="display:none">+ <img class="toin__icon" src="https://storage.googleapis.com/exchange-289306.appspot.com/tola/toin.png" width="20" alt=""><span class="toin__amount">1123</span></div>
+    <div onclick="closeReceiveCoin()" class="close__button__gift"><i class="las la-times la-64"></i></div>
+</div>
+@endif
 <body dir="{{!setting('style_rtl') ?: 'rtl'}}">
 <div id="wrapper">
     <header id="header" class="site-header">
@@ -500,7 +507,7 @@
 <script src="{{asset('assets/js/main.js?v=1.5')}}"></script>
 <script src="{{asset('assets/js/custom.js?v=' . time())}}"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key={{setting('goolge_map_api_key', 'AIzaSyD-2mhVoLX7oIOgRQ-6bxlJt4TF5k0xhWc')}}&libraries=places&language={{\Illuminate\Support\Facades\App::getLocale()}}"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.0/sweetalert2.min.js"></script>
 @stack('scripts')
 
 </body>

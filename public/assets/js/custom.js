@@ -667,3 +667,35 @@ function changeCountry(country_id, country_name)
         }
     });
 }
+
+function receiveToin()
+{
+    $.ajax({
+        // dataType: 'json',
+        url: `${app_url}/ajax-receive-gift-daily`,
+        data: {
+          
+        },
+        beforeSend: function () {
+        },
+        success: function (response) {
+            if (response.status === 200) {
+                $('.overlay-gift .close__gift').hide()
+                $('.overlay-gift .open__gift').show()
+                $('.overlay-gift .toin').show()
+                $('.toin__amount').html(response.toin)
+            }
+        },
+        error: function (jqXHR) {
+            var response = $.parseJSON(jqXHR.responseText);
+            if (response.message) {
+                alert(response.message);
+            }
+        }
+    });
+}
+
+function closeReceiveCoin(isClose)
+{  
+    $('.overlay-gift').hide()
+}

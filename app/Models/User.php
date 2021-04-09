@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -136,6 +137,11 @@ class User extends Authenticatable
         $this->save();
 
         return $this->api_token;
+    }
+
+    public function giftDaily()
+    {
+        return $this->hasOne('App\Models\GiftDaily')->where('date', Carbon::today());
     }
 
 

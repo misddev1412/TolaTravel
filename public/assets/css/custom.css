@@ -1019,7 +1019,73 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
     position: sticky;
     top: 40px;
 }
+.overlay-gift {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 9999;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.overlay-gift img.close__gift {
+    width: 200px;
+    height: 200px;
+    animation: shake 0.5s;
 
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+
+}
+.overlay-gift img.open__gift {
+    width: 200px;
+    height: 250px;
+}
+
+.overlay-gift .toin {
+    margin-top: 20px;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+.overlay-gift .toin .toin__icon {
+    width: 40px;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+.overlay-gift .toin .toin__amount {
+    color: #fff;
+}
+.close__button__gift {
+    font-size: 60px;
+    color: #fff;
+    font-weight: 600;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
 @media only screen and (max-width: 374px) {
     .golo-grid {
         grid-template-columns: repeat(1, 1fr);
