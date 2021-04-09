@@ -698,4 +698,6 @@ function receiveToin()
 function closeReceiveCoin(isClose)
 {  
     $('.overlay-gift').hide()
+    window.location.reload()
+
 }
