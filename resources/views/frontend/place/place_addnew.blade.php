@@ -83,7 +83,7 @@
                                 <div class="tab-pane fade show {{$index !== 0 ?: "active"}}" id="language_{{$language->code}}" role="tabpanel" aria-labelledby="home-tab">
                                     <div class="field-group field-input">
                                         <label for="place_name">{{__('Place Name')}} ({{$language->code}}) *</label>
-                                        <input type="text" id="place_name" name="{{$language->code}}[name]" value="{{$trans['name'] ?? ''}}" required placeholder="{{__('What the name of place')}}">
+                                        <input type="text" id="place_name" name="{{$language->code}}[name]" value="{{$trans['name'] ?? ''}}"  placeholder="{{__('What the name of place')}}">
                                     </div>
                                     <div class="field-group">
                         
