@@ -88,13 +88,7 @@
                                     </div><!-- .popup__destinations -->
                                     <div class="popup__menu popup__box">
                                         <ul class="menu-arrow">
-                                            <li>
-                                                <a title="Home demo" href="{{route('home')}}">Home</a>
-                                                <ul class="sub-menu">
-                                                    <li><a href="https://lara-business.getgolo.com">Business Listing</a></li>
-                                                    <li><a href="https://lara-cityguide.getgolo.com">City Guide</a></li>
-                                                </ul>
-                                            </li>
+                                            
                                            
                                             <li><a title="Blog" href="{{route('post_list_all')}}">Blog</a></li>
                                             <li><a title="Contacts" href="{{route('page_contact')}}">Contact</a></li>
