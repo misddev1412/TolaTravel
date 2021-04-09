@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Auth;
 use Carbon\Carbon;
-use DB;
 class HomeController extends Controller
 {
     private $response;
