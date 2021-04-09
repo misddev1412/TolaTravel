@@ -208,7 +208,7 @@
                                 @foreach($place['social'] as $key => $social)
                                     <div class="field-inline field-3col social_item">
                                         <div class="field-group field-select">
-                                            <select name="social[{{$key}}][name]" id="place_socials">
+                                            <select name="social[{{$key - 1}}][name]" id="place_socials">
                                                 <option value="">{{__('Select network')}}</option>
                                                 @foreach(SOCIAL_LIST as $k => $value)
                                                     <option value="{{$k}}" {{isSelected($k, $social['name'])}}>{{$value['name']}}</option>
@@ -217,7 +217,7 @@
                                             <i class="la la-angle-down"></i>
                                         </div>
                                         <div class="field-group field-input">
-                                            <input type="text" name="social[{{$key}}][url]" value="{{$social['url']}}" placeholder="{{__('Enter URL include http or www')}}">
+                                            <input type="text" name="social[{{$key - 1}}][url]" value="{{$social['url']}}" placeholder="{{__('Enter URL include http or www')}}">
                                         </div>
                                         <a href="#" class="social_item_remove pt-2">
                                             <i class="la la-trash-alt"></i>
