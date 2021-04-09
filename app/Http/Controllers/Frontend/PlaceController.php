@@ -183,7 +183,6 @@ class PlaceController extends Controller
     public function update(Request $request)
     {
         $request['slug'] = getSlug($request, 'name');
-
         $rule_factory = RuleFactory::make([
             'user_id' => '',
             'country_id' => '',
@@ -210,7 +209,9 @@ class PlaceController extends Controller
             'thumb' => 'mimes:jpeg,jpg,png,gif|max:10000'
         ]);
         $data = $this->validate($request, $rule_factory);
-
+        if (empty($data['social'])) {
+            $data['social'] = [];
+        }
         if ($request->hasFile('thumb')) {
             $thumb = $request->file('thumb');
             $thumb_file = $this->uploadImage($thumb, '');
@@ -223,7 +224,6 @@ class PlaceController extends Controller
         if ($model->save()) {
             return redirect(route('user_my_place'))->with('success', 'Update place success!');
         }
-
         return $request;
     }
 
