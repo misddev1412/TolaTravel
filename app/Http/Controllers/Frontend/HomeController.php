@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 use Auth;
 use Carbon\Carbon;
-
+use DB;
 class HomeController extends Controller
 {
     private $response;
@@ -379,7 +379,7 @@ class HomeController extends Controller
         $random = rand(1, 100);
         if (Auth::check() && Auth::user()->giftDaily == null) {
             GiftDaily::create(['user_id' => Auth::user()->id, 'toin' => $random, 'date' => Carbon::today()]);
-            User::find(Auth::user()->id)->update(['tcoin' => $random]);
+            User::find(Auth::user()->id)->update(['tcoin' => DB::raw("tcoin + $random ")]);
             return response()->json(['status' => 200, 'toin' => $random]);
         }
         return response()->json(['status' => 500]);
