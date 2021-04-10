@@ -1,7 +1,7 @@
 <div class="slick-item">
     <div class="cities__item hover__box">
         <div class="cities__thumb hover__box__thumb">
-            <a title="London" href="{{route('city_detail', $city->slig)}}">
+            <a title="London" href="{{route('city_detail', $city->slug)}}">
                 <img src="{{getImageUrl($city->thumb)}}" alt="{{$city->name}}">
             </a>
         </div>
