@@ -701,3 +701,15 @@ function closeReceiveCoin(isClose)
     window.location.reload()
 
 }
+
+function showFilterHotel()
+{
+    $('.left-sidebar').css('left', '0')
+    $('.sidebar-overlay').show()
+}
+
+function hideFilterHotel()
+{
+    $('.left-sidebar').css('left', '-300px')
+    $('.sidebar-overlay').hide()
+}
