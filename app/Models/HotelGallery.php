@@ -5,13 +5,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class RoomAmenity extends Model
+class HotelGallery extends Model
 {
 
-    protected $table = 'room_amenity';
+    protected $table = 'hotel_gallery';
 
     protected $fillable = [
-        'room_id', 'amenity_id'
+        'hotel_id', 'image_id'
     ];
 
 }

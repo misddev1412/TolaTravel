@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
             </div>
 
-            {{-- <form action="{{route('admin_room_store')}}" method="post" enctype="multipart/form-data" data-parsley-validate> --}}
+            <form id="form_room_add"  enctype="multipart/form-data" data-parsley-validate>
                 <input type="hidden" id="add_room_method" name="_method" value="POST">
                 <input type="hidden"  name="hotel_id" value="{{$hotel_id}}" value="POST">
                 @csrf
@@ -69,7 +69,7 @@
                             <div class="row room_image">
                                 <div class="col-md-4">
                                     <p><strong>Thumbnail image:</strong></p>
-                                    <img id="preview_thumb" src="https://storage.googleapis.com/exchange-289306.appspot.com/tola/Artboard%201.png" alt="city thumb">
+                                    <img id="room_preview_thumb" src="https://storage.googleapis.com/exchange-289306.appspot.com/tola/Artboard%201.png" alt="city thumb">
                                     <input type="file" class="form-control" id="room_thumb" name="thumb" accept="image/*">
                                 </div>
                                 <div class="col-md-8 gallery__room_box">
@@ -114,12 +114,12 @@
 
                 <div class="modal-footer">
                     <input type="hidden" id="room_id" name="room_id" value="">
-                    <button class="btn btn-primary" type="button" id="submit_add_room">Add</button>
+                    <button class="btn btn-primary" type="subbmit" id="submit_add_room">Add</button>
                     <button class="btn btn-primary" id="submit_edit_city">Save</button>
                     <button class="btn btn-default" data-dismiss="modal">Cancel</button>
                 </div>
 
-            {{-- </form> --}}
+            </form>
 
         </div>
     </div>

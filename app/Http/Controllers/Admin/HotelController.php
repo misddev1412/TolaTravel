@@ -14,6 +14,7 @@ use App\Models\Room;
 use App\Models\RoomGallery;
 use App\Models\RoomAmenity;
 use App\Models\RoomType;
+use App\Models\HotelGallery;
 use Astrotomic\Translatable\Validation\RuleFactory;
 use Illuminate\Http\Request;
 use EasySlugger\Utf8Slugger;
@@ -75,13 +76,16 @@ class HotelController extends Controller
             $thumb_file = $this->uploadImage($thumb, '');
             $data['thumb'] = $thumb_file;
         }
-        if ($request->hasFile('fileUpload')) {
-            $banner = $request->file('fileUpload');
-            $banner_file = $this->uploadImage($banner, '');
-            $data['banner'] = $banner_file;
-        }
-
         $result = Hotel::create($data);
+
+        if ($request->hasFile('fileUpload')) {
+            foreach ($request->fileUpload as $gallery) {
+                $banner_file = $this->uploadImage($gallery, '', true);
+                HotelGallery::create(['hotel_id' => $result->id, 'image_id' => $banner_file]);
+
+            }
+            
+        }
         Room::where('hotel_id', $request->hotel_id)->update(['hotel_id' => $result->id]);
 
 
@@ -190,7 +194,7 @@ class HotelController extends Controller
         }
         if ($request->has('amenities')) {
             foreach($request->amenities as $amenities) {
-                RoomAmenity::create(['room_id' => $result->id, 'amenity_id' => $amenities]);
+                $result = RoomAmenity::create(['room_id' => $result->id, 'amenity_id' => $amenities]);
             }
         }
         if ($request->has('inclusions')) {

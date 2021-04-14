@@ -15,6 +15,7 @@
                 @method('put')
             @endif
             @csrf
+            <input type="hidden" name="hotel_id" value="{{$hotel_id}}">
 
             <div class="col-md-8 col-sm-8 col-xs-12">
 
@@ -229,16 +230,30 @@
             });
 
 
-            $("#submit_add_room").on('click', function () {
+            $('#room_thumb').change(function () {
+                previewUploadImage(this, 'room_preview_thumb')
+            });
 
+            $("#form_room_add").on('submit', function (e) {
+                e.preventDefault()
+                // var formDataArray = $(this).serializeArray();
+                var fd = new FormData(this);
+         
+
+                // var files = $('[name="thumb"]')[0].files;
+                // if(files.length > 0 ){
+                //     console.log(files)
+                //     fd.append('file',files[0]);
+                // }
+                console.log(fd)
                 $.ajax({
                     type: "POST",
                     url: "{{route('admin_room_store')}}",
-                    data: {
-                        '_token': CSRF_TOKEN,
-                        'room_type_id': $('[name="room_type_id"]').val()
-                    },
+                    data: fd,
                     dataType: 'json',
+                    processData: false,
+                    contentType: false,
+
                     beforeSend: function () {
                        
                     },
@@ -277,6 +292,12 @@
                         $('[name="capacity"]').val(response.data.capacity);
                         $('[name="bed"]').val(response.data.bed);
                         $('[name="pass_wifi"]').val(response.data.pass_wifi);
+                        if (response.data.thumb) {
+                            $('#room_preview_thumb').attr('src', `/uploads/${response.data.thumb}`);
+                        } else {
+                            $('#room_preview_thumb').attr('src', `https://storage.googleapis.com/exchange-289306.appspot.com/tola/Artboard%201.png`);
+                        }
+                         
                     }
                 },
                 error: function (jqXHR) {
