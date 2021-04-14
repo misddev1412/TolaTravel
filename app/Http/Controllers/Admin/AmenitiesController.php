@@ -31,7 +31,7 @@ class AmenitiesController extends Controller
     {
         $rule_factory = RuleFactory::make([
             '%name%' => '',
-            'icon' => 'mimes:jpeg,jpg,png,gif,svg|max:10000'
+            'icon' => 'mimes:jpeg,jpg,png,gif|max:10000'
         ]);
         $data = $this->validate($request, $rule_factory);
 
