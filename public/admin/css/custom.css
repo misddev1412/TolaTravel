@@ -84,6 +84,10 @@
     height: 300px;
     top: -55px;
 }
+.hotel_create #map {
+    width: 100%;
+    height: 300px;
+}
 
 .city_create #pac-input {
     position: relative;
@@ -292,6 +296,51 @@
 .p-0 {
     padding: 0;
 }
+.hotel_create .room__list {
+    padding-left: 0;
+    border-bottom: 1px solid #e6e6e6;
+    padding-bottom: 20px;
+}
+.hotel_create .room__list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.hotel_create .add_more__room {
+ 
+    font-size: 16px;
+    font-weight: 600;
+}
+.room_create .room_image img{
+    width: 100%;
+}
+.room_create .amenities__box{
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+}
+.room_create .amenities__box label{
+    font-size: 16px;
+    font-weight: 600;
+}
+.room_create .gallery__room_box #room_gallery{
+    height: 340px;
+    overflow: scroll;
+    border: 1px solid #ced4d9;
+    padding: 20px 10px;
+}
+.room_create .amenities__container{
+    display: flex;
+    flex-direction: row;
+   
+}
+.room_create .inclusions__container{
+    display: flex;
+    flex-direction: row;
+   
+}
 
 #media #preview_thumb {
     width: 120px;
@@ -348,4 +397,9 @@
     background-size: contain;
     background-repeat: no-repeat;
     display: block;
+}
+
+.room__action span:hover {
+    cursor: pointer;
+    color: #0056b3;
 }

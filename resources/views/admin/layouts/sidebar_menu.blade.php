@@ -16,7 +16,8 @@
                         <li><a href="{{route('admin_place_type_list')}}"><i class="fa fa-tags"></i> Place Type</a></li>
                         <li><a href="{{route('admin_category_list', \App\Models\Category::TYPE_PLACE)}}"><i class="fa fa-list"></i> Categories</a></li>
                         <li><a href="{{route('admin_amenities_list')}}"><i class="fa fa-wifi"></i> Amenities</a></li>
-                        <li><a href="{{route('admin_city_list')}}"><i class="fa fa-building"></i> Cities</a></li>
+                        <li><a href="{{route('admin_city_list')}}"><i class="fa fa-university"></i> Cities</a></li>
+                        <li><a href="{{route('admin_hotel_list')}}"><i class="fa fa-building"></i> Hotels</a></li>
                         <li><a href="{{route('admin_country_list')}}"><i class="fa fa-globe"></i> Countries</a></li>
                     </ul>
                 </li>

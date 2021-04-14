@@ -20,9 +20,10 @@ class AmenitiesController extends Controller
     public function list()
     {
         $amenities = $this->amenities->getListAll();
-
+        $amenitiesType = Amenities::TYPE;
         return view('admin.amenities.amenities_list', [
-            'amenities' => $amenities
+            'amenities' => $amenities,
+            'amenitiesType' => $amenitiesType
         ]);
     }
 

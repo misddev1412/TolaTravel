@@ -51,6 +51,7 @@
 {{--dataTables--}}
 <script src="{{asset('/admin/vendors/datatables.net/js/jquery.dataTables.min.js')}}"></script>
 <script src="{{asset('/admin/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js')}}"></script>
+<script src="{{asset('/admin/vendors/multi-picker/spartan-multi-image-picker-min.js')}}"></script>
 
 <script src="{{asset('/admin/vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js')}}"></script>
 

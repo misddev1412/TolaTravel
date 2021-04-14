@@ -14,6 +14,7 @@
             $(`input[name="${value.locale}[name]"]`).val(value.name);
         });
 
+        $('[name="type"]').val($(this).attr('data-type')).trigger('change')
         $('#submit_add_amenities').hide();
         $('#submit_edit_amenities').show();
         $('#add_amenities_method').val('PUT');

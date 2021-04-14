@@ -38,6 +38,7 @@
                                             data-name="{{$item->name}}"
                                             data-icon="{{$item->icon}}"
                                             data-translations="{{$item->translations}}"
+                                            data-type="{{$item->type}}"
                                     >Edit
                                     </button>
                                     <form class="d-inline" action="{{route('admin_amenities_delete',$item->id)}}" method="POST">

@@ -30,6 +30,15 @@
                                         </div>
                                     </div>
                                 @endforeach
+                                <div class="form-group">
+                                    <label for="name">Amenities type: *</label>
+                                    <select name="type" id="" class="form-control">
+                                        <option value="">{{__('Please select type')}}</option>
+                                        @foreach($amenitiesType as $index => $name)
+                                            <option value="{{$index}}">{{$name}}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
                             </div>
 
                             {{--<div class="form-group">--}}

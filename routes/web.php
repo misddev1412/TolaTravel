@@ -79,6 +79,7 @@ $router->group([
     $router->get('/cities/{country_id}', 'CityController@getListByCountry')->name('city_get_list');
     $router->get('country/{country_id}/cities', 'CityController@getListMoreByCountry')->name('city_more_by_country');
     $router->get('country/{country_id}/hotels', 'HotelController@getListMoreByCountry')->name('hotel_more_by_country');
+    $router->get('country/{country_id}/hotels/{slug}', 'HotelController@detail')->name('hotel_detail');
     $router->get('/cities', 'CityController@search')->name('city_search');
 
     $router->get('/search-listing-input', 'HomeController@searchListing')->name('search_listing');
@@ -109,6 +110,16 @@ $router->group([
     $router->put('/city', 'CityController@update')->name('city_update');
     $router->put('/city/status', 'CityController@updateStatus')->name('city_update_status');
     $router->delete('/city/{id}', 'CityController@destroy')->name('city_delete');
+
+    $router->post('/room/store', 'HotelController@roomStore')->name('room_store');
+    $router->get('/room/edit', 'HotelController@roomEdit')->name('room_edit');
+
+    $router->get('/hotel', 'HotelController@list')->name('hotel_list');
+    $router->get('/hotel/add', 'HotelController@add')->name('hotel_add');
+    $router->post('/hotel/store', 'HotelController@create')->name('hotel_create');
+    $router->put('/hotel', 'HotelController@update')->name('hotel_update');
+    $router->put('/hotel/status', 'HotelController@updateStatus')->name('hotel_update_status');
+    $router->delete('/hotel/{id}', 'HotelController@destroy')->name('hotel_delete');
 
     $router->get('/category/{type}', 'CategoryController@list')->name('category_list');
     $router->post('/category', 'CategoryController@create')->name('category_create');

@@ -17,6 +17,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/photoswipe/default-skin/default-skin.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/lity/lity.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{asset('assets/libs/gijgo/css/gijgo.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{asset('assets/css/lightslider.min.css')}}"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.16.0/sweetalert2.min.css">
@@ -504,6 +505,9 @@
 <script src="{{asset('assets/libs/quilljs/js/quill.js')}}"></script>
 <script src="{{asset('assets/libs/gijgo/js/gijgo.min.js')}}"></script>
 <script src="{{asset('assets/libs/chosen/chosen.jquery.min.js')}}"></script>
+<script src="{{asset('assets/js/lightslider.min.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <!-- orther script -->
 <script src="{{asset('assets/js/main.js?v=1.5')}}"></script>
 <script src="{{asset('assets/js/custom.js?v=' . time())}}"></script>

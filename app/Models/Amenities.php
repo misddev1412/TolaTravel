@@ -21,6 +21,16 @@ class Amenities extends Model
     const STATUS_ACTIVE = 1;
     const STATUS_DEACTIVE = 0;
 
+    const TYPE              = [
+        1                   => 'Furniture',
+        2                   => 'Outside',
+        3                   => 'Utilities',
+    ];
+    const TYPE_FURNITURE    = 1;
+    const TYPE_OUTSIDE      = 2;
+    const TYPE_UTILITIES    = 3;
+
+
     public function getListAll()
     {
         $amenities = self::query()
