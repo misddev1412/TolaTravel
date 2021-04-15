@@ -29,4 +29,10 @@ class Hotel extends Model implements TranslatableContract
         $hotels = $hotels->orderBy('created_at', 'desc')->get();
         return $hotels;
     }
+
+    public function room()
+    {
+        return $this->hasMany('App\Models\Room', 'hotel_id', 'id');
+    }
+
 }

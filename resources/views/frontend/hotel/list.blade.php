@@ -202,196 +202,50 @@
                             <i class="las la-filter"></i>
                         </a>
                         <div class="list-view content" >
-                            <div class="list-box col-12 popular grid-item wow fadeInUp" >
-                                <div class="list-img">
-                                    <a href="hotel-single-7.html">
-                                    <img src="http://themes.pixelstrap.com/rica/assets/images/hotel/gallery/1.jpg" class="img-fluid blur-up lazyloaded" alt="">
-                                    </a>
-                                </div>
-                                <div class="list-content">
-                                    <div>
-                                        <a href="hotel-single-7.html">
-                                            <h5>sea view hotel</h5>
+                            @foreach($hotels as $item)
+                                <div class="list-box col-12 popular grid-item wow fadeInUp" >
+                                    <div class="list-img">
+                                        <a href="{{route('hotel_detail', ['country_slug' => $country_slug, 'slug' => $item->slug])}}">
+                                        <img src="{{asset('uploads/' . $item->thumb)}}" class="img-fluid blur-up lazyloaded" alt="">
                                         </a>
-                                        <p>dubai, 2km from center</p>
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <span>26412 review</span>
-                                        </div>
-                                        <div class="facility-icon">
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/beer.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>bar</span>
+                                    </div>
+                                    <div class="list-content">
+                                        <div>
+                                            <a href="hotel-single-7.html">
+                                                <h5>{{$item->name}}</h5>
+                                            </a>
+                                            <p>{{$item->address}}</p>
+                                            <div class="rating">
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="fas fa-star"></i>
+                                                <i class="far fa-star"></i>
+                                                <span>26412 review</span>
                                             </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/wifi.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>wifi</span>
+                                            <div class="facility-icon">
+                                                @foreach($item->amenlities as $amenlity)
+                                           
+                                                <div class="facility-box">
+                                                    <img src="{{asset('uploads/' . $amenlity['icon'])}}" class="img-fluid blur-up lazyloaded" alt="">
+                                                    <span>{{$amenlity['name']}}</span>
+                                                </div>
+                                                @endforeach
+                                              
                                             </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/sunset.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>beach</span>
+                                            <div class="price">
+                                                <del>$1300</del>
+                                                $1254 <span>/ per night</span>
+                                                <p class="mb-0">login &amp; unlock a secret deal</p>
                                             </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/pool.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>swimming</span>
-                                            </div>
+                                            {{-- <div class="offer-box">
+                                                <i class="fas fa-fire"></i> 8 people booked this hotel today
+                                            </div> --}}
+                                            <a href="hotel-booking.html" class="btn btn-solid color1 book-now">book now</a>
                                         </div>
-                                        <div class="price">
-                                            <del>$1300</del>
-                                            $1254 <span>/ per night</span>
-                                            <p class="mb-0">login &amp; unlock a secret deal</p>
-                                        </div>
-                                        <div class="offer-box">
-                                            <i class="fas fa-fire"></i> 8 people booked this hotel today
-                                        </div>
-                                        <a href="hotel-booking.html" class="btn btn-solid color1 book-now">book now</a>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="list-box col-12 latest grid-item wow fadeInUp" >
-                                <div class="list-img">
-                                    <a href="hotel-single-7.html">
-                                    <img src="http://themes.pixelstrap.com/rica/assets/images/hotel/gallery/2.jpg" class="img-fluid blur-up lazyloaded" alt="">
-                                    </a>
-                                </div>
-                                <div class="list-content">
-                                    <div>
-                                        <a href="hotel-single-7.html">
-                                            <h5>sea view hotel</h5>
-                                        </a>
-                                        <p>dubai, 2km from center</p>
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <span>26412 review</span>
-                                        </div>
-                                        <div class="facility-icon">
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/beer.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>bar</span>
-                                            </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/wifi.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>wifi</span>
-                                            </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/tour/fork.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>restaurant</span>
-                                            </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/pool.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>swimming</span>
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>$1300</del>
-                                            $1254 <span>/ per night</span>
-                                            <p class="mb-0">login &amp; unlock a secret deal</p>
-                                        </div>
-                                        <a href="hotel-booking.html" class="btn btn-solid color1 book-now">book now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-box col-12 popular grid-item wow fadeInUp" >
-                                <div class="list-img">
-                                    <a href="hotel-single-7.html">
-                                    <img src="http://themes.pixelstrap.com/rica/assets/images/hotel/gallery/3.jpg" class="img-fluid blur-up lazyloaded" alt="">
-                                    </a>
-                                </div>
-                                <div class="list-content">
-                                    <div>
-                                        <a href="hotel-single-7.html">
-                                            <h5>sea view hotel</h5>
-                                        </a>
-                                        <p>dubai, 2km from center</p>
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <span>26412 review</span>
-                                        </div>
-                                        <div class="facility-icon">
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/wifi.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>wifi</span>
-                                            </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/sunset.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>beach</span>
-                                            </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/pool.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>swimming</span>
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>$1300</del>
-                                            $1254 <span>/ per night</span>
-                                            <p class="mb-0">login &amp; unlock a secret deal</p>
-                                        </div>
-                                        <div class="offer-box">
-                                            <i class="fas fa-fire"></i> Hurry, Only 1 room left
-                                        </div>
-                                        <a href="hotel-booking.html" class="btn btn-solid color1 book-now">book now</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="list-box col-12 trend grid-item wow fadeInUp" >
-                                <div class="list-img">
-                                    <a href="hotel-single-7.html">
-                                    <img src="http://themes.pixelstrap.com/rica/assets/images/hotel/gallery/4.jpg" class="img-fluid blur-up lazyloaded" alt="">
-                                    </a>
-                                </div>
-                                <div class="list-content">
-                                    <div>
-                                        <a href="hotel-single-7.html">
-                                            <h5>sea view hotel</h5>
-                                        </a>
-                                        <p>dubai, 2km from center</p>
-                                        <div class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="far fa-star"></i>
-                                            <span>26412 review</span>
-                                        </div>
-                                        <div class="facility-icon">
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/beer.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>bar</span>
-                                            </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/wifi.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>wifi</span>
-                                            </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/sunset.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>beach</span>
-                                            </div>
-                                            <div class="facility-box">
-                                                <img src="http://themes.pixelstrap.com/rica/assets/images/icon/hotel/pool.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                <span>swimming</span>
-                                            </div>
-                                        </div>
-                                        <div class="price">
-                                            <del>$1300</del>
-                                            $1254 <span>/ per night</span>
-                                            <p class="mb-0">login &amp; unlock a secret deal</p>
-                                        </div>
-                                        <a href="hotel-booking.html" class="btn btn-solid color1 book-now">book now</a>
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                         <nav aria-label="Page navigation example" class="pagination-section">
                             <ul class="pagination">

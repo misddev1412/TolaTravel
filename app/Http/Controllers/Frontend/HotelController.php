@@ -9,6 +9,9 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\Place;
 use App\Models\PlaceType;
+use App\Models\Hotel;
+use App\Models\Country;
+use App\Models\RoomAmenity;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
@@ -27,10 +30,10 @@ class HotelController extends Controller
 
     }
 
-    public function detail(Request $request, $slug, $cat_slug = null)
+    public function detail(Request $request, $country_slug, $hotel_slug)
     {
-      
-
+        $detail = Hotel::where('slug', $hotel_slug)->first();
+        $data['detal']  = $detail;
         return view('frontend.hotel.detail');
     }
 
@@ -59,15 +62,34 @@ class HotelController extends Controller
         return $cities;
     }
 
-    public function getListMoreByCountry($country_id, Request $request)
+    public function getListMoreByCountry($country_slug, Request $request)
     {
-        $cities = City::query();
+        $hotels = Hotel::select();
+        $country_id = Country::select('id')->where('slug', $country_slug)->first()->id ?? null;
         if ($country_id) {
-            $cities->where('country_id', $country_id);
+            $hotels->where('country_id', $country_id);
         }
-        $cities = $cities->orderBy('created_at', 'desc')->paginate(12);
+
+        $hotels = $hotels->orderBy('created_at', 'desc')->paginate(12);
+
+    
+        $hotels->map(function ($collection) {
+            $roomIds    = [];
+            foreach ($collection->room as $room) {
+                $roomIds[] = $room->id;
+            }
+            $amenlities = RoomAmenity::select('amenity_id')->whereIn('room_id', $roomIds)->get();
+            $amenlitiesIds = [];
+            foreach ($amenlities as $item) {
+                $amenlitiesIds[] = $item->amenity_id;
+            }
+            $listAmenlitiesByRoom = Amenities::select('id', 'name', 'icon')->whereIn('id', $amenlitiesIds)->get()->toArray();
+            $collection->amenlities = $listAmenlitiesByRoom;
+        });
+
         return view('frontend.hotel.list', [
-            'cities'    => $cities
+            'hotels'    => $hotels,
+            'country_slug' => $country_slug
         ]);
     }
 }
