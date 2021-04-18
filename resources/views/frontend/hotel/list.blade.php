@@ -234,8 +234,13 @@
                                               
                                             </div>
                                             <div class="price">
-                                                <del>$1300</del>
-                                                $1254 <span>/ per night</span>
+                                                @if($item->promotion_price < $item->price)
+                                                <del>${{$item->price}}</del>
+                                                ${{$item->promotion_price}} <span>/ per night</span>
+                                                @else 
+                                                ${{$item->price}} <span>/ per night</span>
+
+                                                @endif 
                                                 <p class="mb-0">login &amp; unlock a secret deal</p>
                                             </div>
                                             {{-- <div class="offer-box">

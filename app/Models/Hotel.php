@@ -35,4 +35,9 @@ class Hotel extends Model implements TranslatableContract
         return $this->hasMany('App\Models\Room', 'hotel_id', 'id');
     }
 
+    public function images()
+    {
+        return $this->belongsToMany('App\Models\Image', 'hotel_gallery', 'hotel_id', 'image_id');
+    }
+
 }

@@ -32,9 +32,13 @@ class HotelController extends Controller
 
     public function detail(Request $request, $country_slug, $hotel_slug)
     {
-        $detail = Hotel::where('slug', $hotel_slug)->first();
-        $data['detal']  = $detail;
-        return view('frontend.hotel.detail');
+        $detail = Hotel::where('slug', $hotel_slug)->with('room')->with('room.room_type')
+        ->with('room.images')
+        ->with('room.amenities')
+        ->first();
+        $data['detail']  = $detail;
+        // dd($detail);
+        return view('frontend.hotel.detail', $data);
     }
 
     public function getListByCountry($country_id)
@@ -85,7 +89,11 @@ class HotelController extends Controller
             }
             $listAmenlitiesByRoom = Amenities::select('id', 'name', 'icon')->whereIn('id', $amenlitiesIds)->get()->toArray();
             $collection->amenlities = $listAmenlitiesByRoom;
+
+            $collection->price  = $collection->room->avg('price') ?? 0;
+            $collection->promotion_price  = $collection->room->avg('promotion_price');
         });
+
 
         return view('frontend.hotel.list', [
             'hotels'    => $hotels,

@@ -17,6 +17,17 @@ class Room extends Model
 
     public function room_type()
     {
-        return $this->hasMany('App\Models\RoomType', 'id', 'room_type_id');
+        return $this->hasOne('App\Models\RoomType', 'id', 'room_type_id');
+    }
+
+    public function images()
+    {
+        return $this->belongsToMany('App\Models\Image', 'room_gallery', 'room_id', 'image_id');
+    }
+
+    public function amenities()
+    {
+        return $this->belongsToMany('App\Models\Amenities', 'room_amenity', 'room_id', 'amenity_id');
+
     }
 }

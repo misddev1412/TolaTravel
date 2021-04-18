@@ -14,7 +14,7 @@
                         <div class="hotel-name">
                             <div class="left-part">
                                 <div class="top">
-                                    <h2>sea view hotel</h2>
+                                    <h2>{{$detail->name}}</h2>
                                     <div class="rating">
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -27,53 +27,23 @@
                                         <a href="#" class="btn btn-solid"><i class="far fa-heart"></i> save</a>
                                     </div>
                                 </div>
-                                <p>Mina Road, Bur Dubai, Dubai, United Arab Emirates</p>
-                                <div class="facility-detail">
+                                <p>{{$detail->address}}</p>
+                                {{-- <div class="facility-detail">
                                     <span>free wifi</span>
                                     <span>free breakfast</span>
-                                </div>
+                                </div> --}}
                             </div>
                           
                         </div>
                     </div>
                     <div class="slider__image">
                         <ul id="lightSlider">
-                            <li data-thumb="https://themes.pixelstrap.com/rica/assets/images/single-hotel/slider/7.jpg">
-                                <img src="https://themes.pixelstrap.com/rica/assets/images/single-hotel/slider/7.jpg" />
+                            @foreach($detail->images as $image)
+                            <li data-thumb="{{asset($image->thumbnail)}}">
+                                <img src="{{asset($image->big_image)}}" />
                             </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-2.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-2.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-3.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-3.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-4.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-4.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-5.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-5.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-6.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-6.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-7.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-7.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-8.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-8.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-9.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-9.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-10.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-10.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-11.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-12.jpg" />
-                            </li>
-                            <li data-thumb="https://sachinchoolur.github.io/lightslider/img/thumb/cS-13.jpg">
-                                <img src="https://sachinchoolur.github.io/lightslider/img/cS-13.jpg" />
-                            </li>
+                            @endforeach
+                           
                         </ul>
                     </div>
                     <div class="description-section tab-section">
@@ -95,12 +65,13 @@
                                 <div role="tabpanel" class="menu-part tab-pane fade active show" id="rooms">
                                     <table class="rooms-box">
                                         <tbody>
+                                            @foreach($detail->room as $room)
                                             <tr>
                                                 <td>
-                                                    <h6 class="room-title">Deluxe Room</h6>
+                                                    <h6 class="room-title">{{$room->room_type->name}}</h6>
                                                     <div href="#" class="image__container">
-                                                    <img src="https://themes.pixelstrap.com/rica/assets/images/hotel/room/4.jpg" class="img-fluid blur-up lazyloaded" alt="">
-                                                    <span class="more__image">99 <i class="las la-image"></i></span>
+                                                    <img src="{{asset('uploads/' . $room->thumb)}}" class="img-fluid blur-up lazyloaded" alt="">
+                                                    <span class="more__image">{{$room->images->count()}} <i class="las la-image"></i></span>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -110,31 +81,16 @@
                                                                 <h6>Amenities</h6>
                                                                 <div class="facility-detail">
                                                                     <ul>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/tour/bed.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            king/twin
+                                                                        @foreach($room->amenities as $amenity)
+                                                                        <li><img src="{{asset('uploads/' . $amenity->icon)}}" class="img-fluid blur-up lazyloaded" alt="">
+                                                                            {{$amenity->name}}
                                                                         </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/shower.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            Shower
-                                                                        </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/television.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            LCD TV
-                                                                        </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/couch.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            couch
-                                                                        </li>
+                                                                        @endforeach
+                                                                       
                                                                     </ul>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-6 p-0">
-                                                                <h6>inclusion</h6>
-                                                                <div class="facility-detail">
-                                                                    <ul>
-                                                                        <li><i class="fas fa-check"></i> Wi-Fi</li>
-                                                                        <li><i class="fas fa-check"></i> Breakfast</li>
-                                                                        <li><i class="fas fa-check"></i>non refundable</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
+                                                           
                                                         </div>
                                                     </div>
                                                 </td>
@@ -142,9 +98,12 @@
                                                     <div class="price-details">
                                                         <div>
                                                             <div class="price__left">
-
-                                                                <h6><del>$1250</del></h6>
-                                                                <h5>$1000</h5>
+                                                                @if($room->promotion_price < $room->price)
+                                                                <h6><del>${{$room->price}}</del></h6>
+                                                                <h5>${{$room->promotion_price}}</h5>
+                                                                @else
+                                                                <h5>${{$room->price}}</h5>
+                                                                @endif
                                                                 <span>per night</span>
                                                             </div>
                                                             <div class="right__part">
@@ -154,116 +113,7 @@
                                                     </div>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="room-title">Suite Room</h6>
-                                                    <a href="#">
-                                                    <img src="https://themes.pixelstrap.com/rica/assets/images/hotel/room/5.jpg" class="img-fluid blur-up lazyloaded" alt="">
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <div class="room-detail">
-                                                        <div class="row">
-                                                            <div class="col-6 p-0">
-                                                                <h6>Amenities</h6>
-                                                                <div class="facility-detail">
-                                                                    <ul>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/tour/bed.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            king/twin
-                                                                        </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/pool.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            Pool View
-                                                                        </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/shower.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            Shower
-                                                                        </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/television.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            LCD TV
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6 p-0">
-                                                                <h6>inclusion</h6>
-                                                                <div class="facility-detail">
-                                                                    <ul>
-                                                                        <li><i class="fas fa-check"></i> Wi-Fi</li>
-                                                                        <li><i class="fas fa-check"></i> Breakfast</li>
-                                                                        <li><i class="fas fa-check"></i> free cancellation
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="price-details">
-                                                        <div>
-                                                            <h6><del>$1350</del></h6>
-                                                            <h5>$1100</h5>
-                                                            <span>per night</span>
-                                                            <a href="hotel-booking.html" class="btn btn-rounded btn-sm color1">book now</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>
-                                                    <h6 class="room-title">Royal Room</h6>
-                                                    <a href="#">
-                                                    <img src="https://themes.pixelstrap.com/rica/assets/images/hotel/room/6.jpg" class="img-fluid blur-up lazyloaded" alt="">
-                                                    </a>
-                                                </td>
-                                                <td>
-                                                    <div class="room-detail">
-                                                        <div class="row">
-                                                            <div class="col-6 p-0">
-                                                                <h6>Amenities</h6>
-                                                                <div class="facility-detail">
-                                                                    <ul>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/tour/bed.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            king/twin
-                                                                        </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/pool.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            Pool View
-                                                                        </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/shower.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            Shower
-                                                                        </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/television.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            LCD TV
-                                                                        </li>
-                                                                        <li><img src="https://themes.pixelstrap.com/rica/assets/images/icon/hotel/couch.png" class="img-fluid blur-up lazyloaded" alt="">
-                                                                            couch
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-6 p-0">
-                                                                <h6>inclusion</h6>
-                                                                <div class="facility-detail">
-                                                                    <ul>
-                                                                        <li><i class="fas fa-check"></i> Wi-Fi</li>
-                                                                        <li><i class="fas fa-check"></i> Breakfast</li>
-                                                                        <li><i class="fas fa-check"></i> Dinner &amp; lunch</li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td>
-                                                    <div class="price-details">
-                                                        <div>
-                                                            <h6><del>$1950</del></h6>
-                                                            <h5>$1800</h5>
-                                                            <span>per night</span>
-                                                            <a href="hotel-booking.html" class="btn btn-rounded btn-sm color1">book now</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
