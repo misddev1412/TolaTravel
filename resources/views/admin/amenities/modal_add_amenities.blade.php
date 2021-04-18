@@ -39,6 +39,15 @@
                                         @endforeach
                                     </select>
                                 </div>
+                                <div class="form-group">
+                                    <label for="name">Amenities category: *</label>
+                                    <div class="checkbox">
+                                        <label class="mr-2"><input type="checkbox" class="flat" name="category[]" value="0"> Place</label>
+                                        <label class="mr-2"><input type="checkbox" class="flat" name="category[]" value="1"> Hotel</label>
+                                        <label class="mr-2"><input type="checkbox" class="flat" name="category[]" value="2"> Restaurant</label>
+
+                                    </div>
+                                </div>
                             </div>
 
                             {{--<div class="form-group">--}}

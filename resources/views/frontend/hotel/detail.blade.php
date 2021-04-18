@@ -43,7 +43,6 @@
                                 <img src="{{asset($image->big_image)}}" />
                             </li>
                             @endforeach
-                           
                         </ul>
                     </div>
                     <div class="description-section tab-section">

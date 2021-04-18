@@ -14,7 +14,7 @@ class Amenities extends Model
 
     protected $table = 'amenities';
 
-    protected $fillable = ['icon'];
+    protected $fillable = ['icon', 'category'];
 
     protected $hidden = [];
 

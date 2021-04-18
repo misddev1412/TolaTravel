@@ -8,6 +8,10 @@
         let amenities_id = $(this).attr('data-id');
         // let amenities_name = $(this).attr('data-name');
         let amenities_icon = $(this).attr('data-icon');
+        let amenities_category = $(this).attr('data-category');
+        // amenities_category.forEach(function (value) {
+        //     alert(value)
+        // });
         let translations = JSON.parse($(this).attr('data-translations'));
 
         translations.forEach(function (value) {

@@ -20,6 +20,7 @@ class AmenitiesController extends Controller
     public function list()
     {
         $amenities = $this->amenities->getListAll();
+
         $amenitiesType = Amenities::TYPE;
         return view('admin.amenities.amenities_list', [
             'amenities' => $amenities,
@@ -40,7 +41,7 @@ class AmenitiesController extends Controller
             $file_name = $this->uploadImage($icon, '');
             $data['icon'] = $file_name;
         }
-
+        $data['category'] = json_encode($request->category);
         $model = new Amenities();
         $model->fill($data)->save();
 
