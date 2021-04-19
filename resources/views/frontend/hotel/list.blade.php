@@ -211,7 +211,7 @@
                                     </div>
                                     <div class="list-content">
                                         <div>
-                                            <a href="hotel-single-7.html">
+                                            <a href="{{route('hotel_detail', ['country_slug' => $country_slug, 'slug' => $item->slug])}}">
                                                 <h5>{{$item->name}}</h5>
                                             </a>
                                             <p>{{$item->address}}</p>
@@ -246,7 +246,7 @@
                                             {{-- <div class="offer-box">
                                                 <i class="fas fa-fire"></i> 8 people booked this hotel today
                                             </div> --}}
-                                            <a href="hotel-booking.html" class="btn btn-solid color1 book-now">book now</a>
+                                            <a href="{{route('hotel_detail', ['country_slug' => $country_slug, 'slug' => $item->slug])}}" class="btn btn-solid color1 book-now">book now</a>
                                         </div>
                                     </div>
                                 </div>

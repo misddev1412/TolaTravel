@@ -36,7 +36,24 @@ class HotelController extends Controller
         ->with('room.images')
         ->with('room.amenities')
         ->first();
-        $data['detail']  = $detail;
+        $data['detail']         = $detail;
+        $data['same_hotel']     = Hotel::where('city_id', $detail->city_id)->where('id', '!=', $detail->id)->orderBy('id', 'desc')->take(12)->get();
+        $data['same_hotel']->map(function ($collection) {
+            $roomIds    = [];
+            foreach ($collection->room as $room) {
+                $roomIds[] = $room->id;
+            }
+            $amenlities = RoomAmenity::select('amenity_id')->whereIn('room_id', $roomIds)->get();
+            $amenlitiesIds = [];
+            foreach ($amenlities as $item) {
+                $amenlitiesIds[] = $item->amenity_id;
+            }
+            $listAmenlitiesByRoom = Amenities::select('id', 'name', 'icon')->whereIn('id', $amenlitiesIds)->get()->toArray();
+            $collection->amenlities = $listAmenlitiesByRoom;
+
+            $collection->price  = $collection->room->avg('price') ?? 0;
+            $collection->promotion_price  = $collection->room->avg('promotion_price');
+        });
         // dd($detail);
         return view('frontend.hotel.detail', $data);
     }

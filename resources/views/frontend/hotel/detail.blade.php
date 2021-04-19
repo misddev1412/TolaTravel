@@ -117,36 +117,7 @@
                                     </table>
                                 </div>
                                 <div role="tabpanel" class="about menu-part tab-pane fade" id="about">
-                                    <h6>Enjoy a luxurious experience!</h6>
-                                    <p>A luxurious hotel in Duba, Sea view is just 500 meters away from the main center.
-                                        Featuring palatial space, modern architecture and stylish interiors, this hotel
-                                        is an ideal choice for a peaceful relaxation or a business
-                                        trip.
-                                    </p>
-                                    <h6>Hotel Facilities</h6>
-                                    <p>The classy hotel has a swimming pool, spa and a fitness centre. It also features
-                                        a well-appointed conference hall and a spacious harbour banquet conference
-                                        centre for events and for meeting business needs. Complimentary
-                                        Wi-Fi is provided on-premises. Other services offered are travel desk, car
-                                        parking and credit card acceptance.
-                                    </p>
-                                    <h6>Dining</h6>
-                                    <p>The luxurious hotel in dubai features an in-house restaurant and a bar. Flame N
-                                        Grill restaurant operates from 7.30 AM till midnight. It offers multi-cuisine
-                                        menu including Continental, Chinese, Indian and Goan dishes.
-                                        Pool Deck BAR is a paradise providing a range of beverages. Featuring a water
-                                        fountain, it also offers a pleasant ambience to enjoy your drinks.
-                                    </p>
-                                    <h6>Room Facilities</h6>
-                                    <p class="mb-0">This hotel has 150 air-conditioned rooms including 50 Superior
-                                        Rooms, 30 Deluxe Rooms, 10 Super Deluxe Rooms, 2 Classic Rooms and 5 Duplex
-                                        Rooms. Most of the rooms have balconies offering spectacular views of the
-                                        environs
-                                        and a few offering phenomenal views of the pool. With contemporary furniture and
-                                        elegant decor, all the rooms ensure utmost comfort for the guests. Some in-room
-                                        amenities include LCD TV with satellite connection,
-                                        minibar and an electronic safe deposit box.
-                                    </p>
+                                    {!!$detail->about!!}
                                 </div>
                                 <div class="menu-part tab-pane fade facility" id="facility">
                                     <div class="row">
@@ -201,8 +172,9 @@
                                     </div>
                                 </div>
                                 <div class="menu-part tab-pane fade map" id="location">
-                                    <h4 class="mb-3">{{__('Address')}}: 123 Century, CA, USA</h4>
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.9147718689!2d-74.11976358820196!3d40.69740344169578!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY%2C%20USA!5e0!3m2!1sen!2sin!4v1568001991098!5m2!1sen!2sin" style="border:0;" allowfullscreen=""></iframe>
+                                    <h4 class="mb-3">{{__('Address')}}: {{$detail->address}}</h4>
+                                    <iframe width="640" height="480" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.it/maps?q={{$detail->address}}&output=embed"></iframe>
+
                                 </div>
                                 <div class="menu-part tab-pane fade review" id="review">
                                     <div class="review-box">
@@ -257,40 +229,7 @@
                                     </div>
                                 </div>
                                 <div class="menu-part tab-pane fade policy" id="policy">
-                                    <p>Check-in: 2.00 PM, Check-out: 12.00 PM</p>
-                                    <p>The primary guest must be at least 18 years of age to check into this hotel.</p>
-                                    <p>It is mandatory for guests to present valid photo identification at the time of
-                                        check-in. According to government regulations, a valid Photo ID has to be
-                                        carried by every person above the age of 18 staying at the hotel.
-                                        The identification proofs accepted are Aadhar Card, Driving License, Voter ID
-                                        Card, and Passport. Without Original copy of valid ID the guest will not be
-                                        allowed to check-in.
-                                    </p>
-                                    <p>Local ID proof &amp; Pan card will not be acceptable as ID proof.</p>
-                                    <p>Unless mentioned, the tariff does not include charges for optional room services
-                                        (such as telephone calls, room service, mini bar, snacks, laundry extra bed
-                                        etc.). In case, such additional charges are levied by the
-                                        hotel(s), we shall not be held responsible for it.
-                                    </p>
-                                    <p>Personal food and beverages are strictly not permitted on the hotel premises.</p>
-                                    <p>The hotel shall not be responsible for any loss of or damage to your personal
-                                        belongings.In case any damage is done to the hotel property by guests during
-                                        their stay, it will be the sole accountability of the guest.
-                                    </p>
-                                    <p>No charge for children below 6 years and the extra cost will be applicable for
-                                        availing an extra bed in a double occupancy room. 
-                                    </p>
-                                    <p>Should any action by a guest be deemed inappropriate by the hotel, or if any
-                                        inappropriate behaviour is brought to the attention of the hotel, the hotel
-                                        reserves the right, after the allegations have been investigated,
-                                        to take action against the guest.
-                                    </p>
-                                    <p>We would love to host you but in case your plans change, our simple cancellation
-                                        process makes sure you receive a quick confirmation and fast refunds. Our
-                                        standard check-in time is 12 noon and you can check-in any time
-                                        after that till your reservation is valid.
-                                    </p>
-                                    <p>Pets are not allowed in the hotel premises.</p>
+                                    {!!$detail->policy!!}
                                 </div>
                             </div>
                         </div>
@@ -361,9 +300,9 @@
                 <div class="col-12">
                     <div class="special-section related-box ratio3_2 grid-box">
                         <ul id="relation_hotel">
-                            @for($i = 0; $i < 10; $i ++)
+                            @foreach($same_hotel as $item)
                                 @include('frontend.common.hotel_item')
-                            @endfor   
+                            @endforeach
                         </ul>
                     </div>
                 </div>
@@ -411,7 +350,7 @@
             loop:true,
             slideMargin: 0,
             thumbItem: 9,
-            autoWidth: true,
+            autoWidth: false,
             responsive : [
                 {
                     breakpoint:800,
