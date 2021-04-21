@@ -310,3 +310,8 @@ function mylattitue()
 
 }
 
+
+function getCountryById($country_id)
+{
+    return \App\Models\Country::find($country_id) ?? [];
+}

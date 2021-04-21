@@ -895,7 +895,19 @@ h1, h2, h3, h4, h5, h6, body, a, label, span {
     height: 300px;
     overflow: scroll;
 }
-
+.right-header {
+    justify-content: space-between;
+}
+.menu__container {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: start;
+}
+.menu__item {
+    display: inline;
+    margin-right: 20px;
+}
 
 @media only screen and (max-width: 1199px) {
     .cities__thumb img {

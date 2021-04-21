@@ -225,194 +225,214 @@
 
 
                 <div class="col-md-7 col-12">
-                    <div class="right-header align-right">
-                        @if(!empty(mylattitue()))
-                        <div class="weather">
-                            <img src="http://openweathermap.org/img/wn/{{mylattitue()['weather'][0]['icon']}}.png" alt=""> {{k_to_c(mylattitue()['main']['temp'])}} &#x2103;
+                    <div class="row">
+                        <div class="col-md-12">
 
-                        </div>
-                        @endif
-                        <div class="right-header__languages">
-                            <a href="#" >
-                                @foreach($languages as $language)
-                                    @if(\Illuminate\Support\Facades\App::getLocale() == $language->code)
-                                    <i class="las la-language la-24"></i> <a title="{{$language->name}}">{{$language->name}}</a>
+                            <div class="right-header align-right">
+                                @if(!empty(mylattitue()))
+                                <div class="weather">
+                                    <img src="http://openweathermap.org/img/wn/{{mylattitue()['weather'][0]['icon']}}.png" alt=""> {{k_to_c(mylattitue()['main']['temp'])}} &#x2103;
+        
+                                </div>
+                                @endif
+                                <div class="right-header__languages">
+                                    <a href="#" >
+                                        @foreach($languages as $language)
+                                            @if(\Illuminate\Support\Facades\App::getLocale() == $language->code)
+                                            <i class="las la-language la-24"></i> <a title="{{$language->name}}">{{$language->name}}</a>
+                                            @endif
+                                        @endforeach
+        
+                                        @if(count($languages) > 1)
+                                            <i class="las la-angle-down la-12-black"></i>
+                                        @endif
+                                    </a>
+                                    @if(count($languages) > 1)
+                                        <ul>
+                                            @foreach($languages as $language)
+                                                @if(\Illuminate\Support\Facades\App::getLocale() !== $language->code)
+                                                    <li><a href="{{route('change_language', $language->code)}}" title="{{$language->name}}">{{$language->name}}</a></li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
                                     @endif
-                                @endforeach
-
-                                @if(count($languages) > 1)
-                                    <i class="las la-angle-down la-12-black"></i>
-                                @endif
-                            </a>
-                            @if(count($languages) > 1)
-                                <ul>
-                                    @foreach($languages as $language)
-                                        @if(\Illuminate\Support\Facades\App::getLocale() !== $language->code)
-                                            <li><a href="{{route('change_language', $language->code)}}" title="{{$language->name}}">{{$language->name}}</a></li>
-                                        @endif
-                                    @endforeach
-                                </ul>
-                            @endif
-                        </div>
-
-                        <div class="right-header__destinations right-header__countries">
-                            <a title="Country" href="#" class="d-flex align-items-center">
-                                <i class="las la-globe la-24"></i> 
-                                @if(Session::has('country_id') || (Auth::check() && Auth::user()->country_id != null))
-                                    
-                                    <span class="country_select">{{getCountry(Session::get('country_id') ?? Auth::user()->country_id)->name ?? __('Country')}}</span>
-                                @else
-                                    <span class="country_select">{{__('Country')}}</span>
-                                @endif
-                                
-                                <i class="las la-angle-down la-12-black ml-1"></i>
-                            </a>
-                            <ul>
-                                @foreach($countries as $country)
-                                    <li><a title="{{$country->name}}" onclick="changeCountry({{$country->id}}, '{{$country->name}}')">{{$country->name}}</a></li>
-                                @endforeach
-                            </ul>
-                        </div><!-- .right-header__countries -->
-
-                        <div class="right-header__destinations">
-                            <a title="Destinations" href="#" class="d-flex align-items-center">
-                                <i class="las la-archway la-24"></i> {{__('Destinations')}}
-                                <i class="la la-angle-down la-12"></i>
-                            </a>
-                            <ul>
-                                @foreach($destinations as $city)
-                                    <li><a href="{{route('city_detail', $city->slug)}}" title="{{$city->name}}">{{$city->name}}</a></li>
-                                @endforeach
-                                @if(Session::get('country_id') || Auth::check() && Auth::user()->country_id)
-                                    <li><a href="{{route('city_more_by_country', Session::get('country_id') ?? Auth::user()->country_id)}}" title="{{__('View more')}}">{{__('View more')}}</a></li>
-
-                                @endif
-
-                            </ul>
-                        </div><!-- .right-header__destinations -->
-                        @guest
-                            <div class="right-header__login">
-                                <a title="Login" class="open-login" href="#">{{__('Login')}}</a>
-                            </div><!-- .right-header__login -->
-                            <div class="right-header__signup">
-                                <a title="Sign Up" class="open-signup" href="#">{{__('Sign Up')}}</a>
-                            </div><!-- .right-header__signup -->
-                            <div class="popup popup-form">
-                                <a title="Close" href="#" class="popup__close">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
-                                        <path fill="#5D5D5D" fill-rule="nonzero" d="M9.3 8.302l6.157-6.156a.706.706 0 1 0-.999-.999L8.302 7.304 2.146 1.148a.706.706 0 1 0-.999.999l6.157 6.156-6.156 6.155a.706.706 0 0 0 .998.999L8.302 9.3l6.156 6.156a.706.706 0 1 0 .998-.999L9.301 8.302z"/>
-                                    </svg>
-                                </a><!-- .popup__close -->
-                                <ul class="choose-form">
-                                    <li class="nav-login"><a title="Log In" href="#login">{{__('Login')}}</a></li>
-                                    <li class="nav-signup"><a title="Sign Up" href="#register">{{__('Sign Up')}}</a></li>
-                                </ul>
-                                <div class="popup-content">
-
-                                    <form class="form-log form-content" id="login" action="{{route('login')}}" method="POST">
-                                        @csrf
-                                        <p class="choose-more">{{__('Continue with')}} <a title="Facebook" class="fb" href="{{route('login_social', 'facebook')}}">Facebook</a> or <a title="Google" class="gg" href="{{route('login_social', 'google')}}">Google</a></p>
-                                        <p class="choose-or"><span>{{__('Or')}}</span></p>
-
-                                        <small class="form-text text-danger golo-d-none" id="login_error">error!</small>
-                                        <div class="field-input">
-                                            <input type="text" id="email" name="email" placeholder="Email Address" required>
-                                        </div>
-                                        <div class="field-input">
-                                            <input type="password" id="password" name="password" placeholder="Password" required>
-                                        </div>
-                                        <div class="choose-form mb-0">
-                                            <a title="Forgot password" class="forgot_pass" href="#forgot_password">{{__('Forgot password')}}</a>
-                                        </div>
-                                        <button type="submit" class="gl-button btn button w-100" id="submit_login">{{__('Login')}}</button>
-                                    </form>
-
-                                    <form class="form-sign form-content" id="register" action="{{route('register')}}" method="post">
-                                        @csrf
-                                        <p class="choose-more">{{__('Continue with')}} <a title="Facebook" class="fb" href="{{route('login_social', 'facebook')}}">Facebook</a> or <a title="Google" class="gg" href="{{route('login_social', 'google')}}">Google</a></p>
-                                        <p class="choose-or"><span>{{__('Or')}}</span></p>
-
-                                        <small class="form-text text-danger golo-d-none" id="register_error">error!</small>
-                                        <div class="field-input">
-                                            <input type="text" id="register_name" name="name" placeholder="Full Name" required>
-                                        </div>
-                                        <div class="field-input">
-                                            <input type="email" id="register_email" name="email" placeholder="Email" required>
-                                        </div>
-                                        <div class="field-input">
-                                            <input type="password" id="register_password" name="password" placeholder="Password" required>
-                                        </div>
-                                        <div class="field-input">
-                                            <input type="password" id="register_password_confirmation" name="password_confirmation" placeholder="Confirm Password" required>
-                                        </div>
-                                        <div class="field-check">
-                                            <label for="accept">
-                                                <input type="checkbox" id="accept" checked required>
-                                                Accept the <a title="Terms" href="#">Terms</a> and <a title="Privacy Policy" href="#">Privacy Policy</a>
-                                                <span class="checkmark">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
-                                                    <path fill="#FFF" fill-rule="nonzero" d="M2.166 4.444L.768 3.047 0 3.815 1.844 5.66l.002-.002.337.337L7.389.788 6.605.005z"/>
-                                                </svg>
-                                            </span>
-                                            </label>
-                                        </div>
-                                        <button type="submit" class="gl-button btn button w-100" id="submit_register">{{__('Sign Up')}}</button>
-                                    </form>
-
-                                    <form class="form-forgotpass form-content" id="forgot_password" action="{{route('api_user_forgot_password')}}" method="POST">
-                                        @csrf
-                                        <p class="choose-or"><span>{{__('Lost your password? Please enter your email address. You will receive a link to create a new password via email.')}}</span></p>
-                                        <small class="form-text text-danger golo-d-none" id="fp_error">error!</small>
-                                        <small class="form-text text-success golo-d-none" id="fp_success">error!</small>
-                                        <div class="field-input">
-                                            <input type="text" id="email" name="email" placeholder="Email Address" required>
-                                        </div>
-                                        <button type="submit" class="gl-button btn button w-100" id="submit_forgot_password">{{__('Forgot password')}}</button>
-                                    </form>
-
                                 </div>
-                            </div><!-- .popup-form -->
-                        @else
-                            <div class="account">
-                                <a href="#" title="{{Auth::user()->name}}">
-                                    <img src="{{getUserAvatar(user()->avatar)}}" alt="{{Auth::user()->name}}">
-                                    <span>
-										{{Auth::user()->name}}  
-										<i class="la la-angle-down la-12"></i>
-                                    </span>
-
-                                        <img style="width:20px;height:20px" src="https://storage.googleapis.com/exchange-289306.appspot.com/tola/toin.png" width="10"> <span style="margin-top:1px">{{number_format(Auth::user()->tcoin)}}</span>
-                                </a>
-                                <div class="account-sub">
+        
+                                <div class="right-header__destinations right-header__countries">
+                                    <a title="Country" href="#" class="d-flex align-items-center">
+                                        <i class="las la-globe la-24"></i> 
+                                        @if(Session::has('country_id') || (Auth::check() && Auth::user()->country_id != null))
+                                            
+                                            <span class="country_select">{{getCountry(Session::get('country_id') ?? Auth::user()->country_id)->name ?? __('Country')}}</span>
+                                        @else
+                                            <span class="country_select">{{__('Country')}}</span>
+                                        @endif
+                                        
+                                        <i class="las la-angle-down la-12-black ml-1"></i>
+                                    </a>
                                     <ul>
-                                        @if(user()->isAdmin())
-                                            <li class="{{isActiveMenu('admin_dashboard')}}"><a href="{{route('admin_dashboard')}}" target="_blank" rel="nofollow">{{__('Dashboard')}}</a></li>
-                                        @endif
-                                        <li class="{{isActiveMenu('user_profile')}}"><a href="{{route('user_profile')}}">{{__('Profile')}}</a></li>
-                                        <li class="{{isActiveMenu('user_my_place')}}"><a href="{{route('user_my_place')}}">{{__('My Places')}}</a></li>
-                                        <li class="{{isActiveMenu('user_wishlist')}}"><a href="{{route('user_wishlist')}}">{{__('Wishlist')}}</a></li>
-                                        <li>
-                                            <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{__('Logout')}}</a>
-                                            <form class="d-none" id="logout-form" action="{{ route('logout') }}" method="POST">
-                                                @csrf
-                                            </form>
-                                        </li>
+                                        @foreach($countries as $country)
+                                            <li><a title="{{$country->name}}" onclick="changeCountry({{$country->id}}, '{{$country->name}}')">{{$country->name}}</a></li>
+                                        @endforeach
                                     </ul>
+                                </div><!-- .right-header__countries -->
+        
+                                <div class="right-header__destinations">
+                                    <a title="Destinations" href="#" class="d-flex align-items-center">
+                                        <i class="las la-archway la-24"></i> {{__('Destinations')}}
+                                        <i class="la la-angle-down la-12"></i>
+                                    </a>
+                                    <ul>
+                                        @foreach($destinations as $city)
+                                            <li><a href="{{route('city_detail', $city->slug)}}" title="{{$city->name}}">{{$city->name}}</a></li>
+                                        @endforeach
+                                        @if(Session::get('country_id') || Auth::check() && Auth::user()->country_id)
+                                            <li><a href="{{route('city_more_by_country', Session::get('country_id') ?? Auth::user()->country_id)}}" title="{{__('View more')}}">{{__('View more')}}</a></li>
+        
+                                        @endif
+        
+                                    </ul>
+                                </div><!-- .right-header__destinations -->
+                                @guest
+                                    <div class="right-header__login">
+                                        <a title="Login" class="open-login" href="#">{{__('Login')}}</a>
+                                    </div><!-- .right-header__login -->
+                                    <div class="right-header__signup">
+                                        <a title="Sign Up" class="open-signup" href="#">{{__('Sign Up')}}</a>
+                                    </div><!-- .right-header__signup -->
+                                    <div class="popup popup-form">
+                                        <a title="Close" href="#" class="popup__close">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                                <path fill="#5D5D5D" fill-rule="nonzero" d="M9.3 8.302l6.157-6.156a.706.706 0 1 0-.999-.999L8.302 7.304 2.146 1.148a.706.706 0 1 0-.999.999l6.157 6.156-6.156 6.155a.706.706 0 0 0 .998.999L8.302 9.3l6.156 6.156a.706.706 0 1 0 .998-.999L9.301 8.302z"/>
+                                            </svg>
+                                        </a><!-- .popup__close -->
+                                        <ul class="choose-form">
+                                            <li class="nav-login"><a title="Log In" href="#login">{{__('Login')}}</a></li>
+                                            <li class="nav-signup"><a title="Sign Up" href="#register">{{__('Sign Up')}}</a></li>
+                                        </ul>
+                                        <div class="popup-content">
+        
+                                            <form class="form-log form-content" id="login" action="{{route('login')}}" method="POST">
+                                                @csrf
+                                                <p class="choose-more">{{__('Continue with')}} <a title="Facebook" class="fb" href="{{route('login_social', 'facebook')}}">Facebook</a> or <a title="Google" class="gg" href="{{route('login_social', 'google')}}">Google</a></p>
+                                                <p class="choose-or"><span>{{__('Or')}}</span></p>
+        
+                                                <small class="form-text text-danger golo-d-none" id="login_error">error!</small>
+                                                <div class="field-input">
+                                                    <input type="text" id="email" name="email" placeholder="Email Address" required>
+                                                </div>
+                                                <div class="field-input">
+                                                    <input type="password" id="password" name="password" placeholder="Password" required>
+                                                </div>
+                                                <div class="choose-form mb-0">
+                                                    <a title="Forgot password" class="forgot_pass" href="#forgot_password">{{__('Forgot password')}}</a>
+                                                </div>
+                                                <button type="submit" class="gl-button btn button w-100" id="submit_login">{{__('Login')}}</button>
+                                            </form>
+        
+                                            <form class="form-sign form-content" id="register" action="{{route('register')}}" method="post">
+                                                @csrf
+                                                <p class="choose-more">{{__('Continue with')}} <a title="Facebook" class="fb" href="{{route('login_social', 'facebook')}}">Facebook</a> or <a title="Google" class="gg" href="{{route('login_social', 'google')}}">Google</a></p>
+                                                <p class="choose-or"><span>{{__('Or')}}</span></p>
+        
+                                                <small class="form-text text-danger golo-d-none" id="register_error">error!</small>
+                                                <div class="field-input">
+                                                    <input type="text" id="register_name" name="name" placeholder="Full Name" required>
+                                                </div>
+                                                <div class="field-input">
+                                                    <input type="email" id="register_email" name="email" placeholder="Email" required>
+                                                </div>
+                                                <div class="field-input">
+                                                    <input type="password" id="register_password" name="password" placeholder="Password" required>
+                                                </div>
+                                                <div class="field-input">
+                                                    <input type="password" id="register_password_confirmation" name="password_confirmation" placeholder="Confirm Password" required>
+                                                </div>
+                                                <div class="field-check">
+                                                    <label for="accept">
+                                                        <input type="checkbox" id="accept" checked required>
+                                                        Accept the <a title="Terms" href="#">Terms</a> and <a title="Privacy Policy" href="#">Privacy Policy</a>
+                                                        <span class="checkmark">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6">
+                                                            <path fill="#FFF" fill-rule="nonzero" d="M2.166 4.444L.768 3.047 0 3.815 1.844 5.66l.002-.002.337.337L7.389.788 6.605.005z"/>
+                                                        </svg>
+                                                    </span>
+                                                    </label>
+                                                </div>
+                                                <button type="submit" class="gl-button btn button w-100" id="submit_register">{{__('Sign Up')}}</button>
+                                            </form>
+        
+                                            <form class="form-forgotpass form-content" id="forgot_password" action="{{route('api_user_forgot_password')}}" method="POST">
+                                                @csrf
+                                                <p class="choose-or"><span>{{__('Lost your password? Please enter your email address. You will receive a link to create a new password via email.')}}</span></p>
+                                                <small class="form-text text-danger golo-d-none" id="fp_error">error!</small>
+                                                <small class="form-text text-success golo-d-none" id="fp_success">error!</small>
+                                                <div class="field-input">
+                                                    <input type="text" id="email" name="email" placeholder="Email Address" required>
+                                                </div>
+                                                <button type="submit" class="gl-button btn button w-100" id="submit_forgot_password">{{__('Forgot password')}}</button>
+                                            </form>
+        
+                                        </div>
+                                    </div><!-- .popup-form -->
+                                @else
+                                    <div class="account">
+                                        <a href="#" title="{{Auth::user()->name}}">
+                                            <img src="{{getUserAvatar(user()->avatar)}}" alt="{{Auth::user()->name}}">
+                                            <span>
+                                                {{Auth::user()->name}}  
+                                                <i class="la la-angle-down la-12"></i>
+                                            </span>
+        
+                                                <img style="width:20px;height:20px" src="https://storage.googleapis.com/exchange-289306.appspot.com/tola/toin.png" width="10"> <span style="margin-top:1px">{{number_format(Auth::user()->tcoin)}}</span>
+                                        </a>
+                                        <div class="account-sub">
+                                            <ul>
+                                                @if(user()->isAdmin())
+                                                    <li class="{{isActiveMenu('admin_dashboard')}}"><a href="{{route('admin_dashboard')}}" target="_blank" rel="nofollow">{{__('Dashboard')}}</a></li>
+                                                @endif
+                                                <li class="{{isActiveMenu('user_profile')}}"><a href="{{route('user_profile')}}">{{__('Profile')}}</a></li>
+                                                <li class="{{isActiveMenu('user_my_place')}}"><a href="{{route('user_my_place')}}">{{__('My Places')}}</a></li>
+                                                <li class="{{isActiveMenu('user_wishlist')}}"><a href="{{route('user_wishlist')}}">{{__('Wishlist')}}</a></li>
+                                                <li>
+                                                    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{__('Logout')}}</a>
+                                                    <form class="d-none" id="logout-form" action="{{ route('logout') }}" method="POST">
+                                                        @csrf
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div><!-- .account -->
+                                @endguest
+                                <div class="right-header__button btn">
+
+                                    <a title="Add place" href="{{route('place_addnew')}}">
+                                        <i class="la la-plus la-24"></i>
+                                        <span>{{__('Add place')}}</span>
+                                    </a>
                                 </div>
-                            </div><!-- .account -->
-                        @endguest
+                            </div><!-- .right-header -->
+                        </div>
                       
-                        <div class="right-header__button btn">
-                            <a title="Add place" href="{{route('place_addnew')}}">
-                                <i class="la la-plus la-24"></i>
-                                <span>{{__('Add place')}}</span>
-                            </a>
-                        </div><!-- .right-header__button -->
-                    </div><!-- .right-header -->
+                    </div>
                 </div><!-- .col-md-6 -->
             </div><!-- .row -->
-
-
+           
+            <div class="row">
+                <div class="col-md-12 mt-3">
+                    <div class="second__menu">
+                    
+                        <div class="">
+                            <ul class="menu__container">
+                                <li class="menu__item">
+                                    <a href="{{route('hotel_more_by_country', ['country_slug' => getCountryById($acticeCountry)->slug ?? 'all'])}}"><i class="fas fa-hotel"></i> {{__('Hotel')}}</a>
+                                </li>
+                                
+                            </ul>
+                        </div><!-- .right-header__button -->
+                    </div>
+                </div>
+            </div>
         </div><!-- .container-fluid -->
     </header><!-- .site-header -->
 

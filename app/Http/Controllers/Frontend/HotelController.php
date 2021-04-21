@@ -88,7 +88,8 @@ class HotelController extends Controller
         $hotels = Hotel::select();
         $country_id = Country::select('id')->where('slug', $country_slug)->first()->id ?? null;
         if ($country_id) {
-            $hotels->where('country_id', $country_id);
+            $cities = City::select('id')->where('country_id', $country_id)->pluck('id');
+            $hotels->whereIn('city_id', $cities);
         }
 
         $hotels = $hotels->orderBy('created_at', 'desc')->paginate(12);
